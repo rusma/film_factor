@@ -3,7 +3,7 @@
 /* Controllers */
 
 angular.module('footballTopscorers.controllers', []).
-    controller('topscorersController', function($scope) {
+    controller('topscorersController', function($scope, statsfcApiService) {
     	$scope.topscorersList = [
     		{
     			player: {
@@ -33,4 +33,8 @@ angular.module('footballTopscorers.controllers', []).
 
     		},
     	];
+
+        statsfcApiService.getTopScorers().success(function(response){
+            console.log(response);
+        });
    	});
