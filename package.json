@@ -1,6 +1,6 @@
 {
-  "name": "angularjs-seed",
-  "description": "A starter project for AngularJS",
+  "name": "football_vis",
+  "description": "Football visualisation in angular",
   "repository": "https://github.com/angular/angular-seed",
   "devDependencies": {
     "phantomjs" : "~1.9",

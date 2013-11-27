@@ -3,35 +3,49 @@
 <head>
   <meta charset="utf-8">
   <title>Topscorers app</title>
-    <script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-route.js"></script>
+  <script src="lib/jquery-latest.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
-
+  
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+    
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body ng-app="footballTopscorers" ng-controller="topscorersController">
+  <input type="text" ng-model="nameFilter" placeholder="Search..."/>
+    <hello></hello>
   <table>
     <thead>
       <tr>
         <th colspan="4">Topscorers standings</th>
       </tr>
     </thead>
+      
+      
     <tbody>
-      <tr ng-repeat="topscorer in topscorersList">
-        <td>{{$index + 1}}</td>
+      <tr ng-repeat="topscorer in topscorersList | filter: nameFilter">
+        <td>{{$index + 2}}</td>
         <td>
           <!-- <img src="img/flags/{{driver.Driver.nationality}}.png" /> -->
-          {{topscorer.player.firstname}}&nbsp;{{topscorer.player.lastname}}
+          {{topscorer.away}}
         </td>
-        <td>{{topscorer.teams[0]}}</td>
-        <td>{{topscorer.goals.competition + topscorer.goals.international + topscorer.european}}</td>
-
+        <td>{{topscorer.team}}</td>
+        <td>{{topscorer.goals}}</td>
+          
       </tr>
     </tbody>
+      
+       <div id="d3bar" angulard3-bar-graph datajson="'sample.json'" 
+                   xaxis-name = "'Year'" 
+                   xaxis-pos = "905"  
+                   yaxis-name = "'Frequency'" 
+                   yaxis-pos = "6" 
+                   d3-format= "'.0%'" ></div>
   </table>
 </body>
 </html>
