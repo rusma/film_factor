@@ -3,9 +3,8 @@
 /* Services */
 
 
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('footballTopscorers.services', []).
+// EXAMPLE API CALL FOR FOOTBALL STATS
+angular.module('film_factor.services', []).
   factory('statsfcApiService', function($http) {
   	var statsfcApi = {};
       

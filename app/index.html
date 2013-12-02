@@ -1,11 +1,12 @@
 <!doctype html>
-<html lang="en" ng-app="footballTopscorers">
+<html lang="en" ng-app="film_factor">
 <head>
   <meta charset="utf-8">
-  <title>Topscorers app</title>
+  <title>Film Factor</title>
 <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-route.js"></script>
   <script src="lib/jquery-latest.min.js"></script>
+  <script src="lib/underscore.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
@@ -16,36 +17,16 @@
     
   <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body ng-app="footballTopscorers" ng-controller="topscorersController">
-  <input type="text" ng-model="nameFilter" placeholder="Search..."/>
-    <hello></hello>
-  <table>
-    <thead>
-      <tr>
-        <th colspan="4">Topscorers standings</th>
-      </tr>
-    </thead>
-      
-      
-    <tbody>
-      <tr ng-repeat="topscorer in topscorersList | filter: nameFilter">
-        <td>{{$index + 2}}</td>
-        <td>
-          <!-- <img src="img/flags/{{driver.Driver.nationality}}.png" /> -->
-          {{topscorer.away}}
-        </td>
-        <td>{{topscorer.team}}</td>
-        <td>{{topscorer.goals}}</td>
-          
-      </tr>
-    </tbody>
-      
-       <div id="d3bar" angulard3-bar-graph datajson="'sample.json'" 
-                   xaxis-name = "'Year'" 
-                   xaxis-pos = "905"  
-                   yaxis-name = "'Frequency'" 
-                   yaxis-pos = "6" 
-                   d3-format= "'.0%'" ></div>
+<body ng-app="film_factor" ng-controller="film_factor_controller">
+       <div id="d3bar" 
+            angulard3-bar-graph datajson="'top-rentals.json'" 
+            data
+            xaxis-name = "'Year'" 
+            xaxis-pos = "905"  
+            yaxis-name = "'Rating'" 
+            yaxis-pos = "6" 
+            d3-format= "'.00%'" >
+    </div>
   </table>
 </body>
 </html>
