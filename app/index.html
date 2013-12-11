@@ -12,21 +12,16 @@
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
+
+  <link href="css/nv.d3.css" rel="stylesheet" type="text/css">
+
+  <script src="lib/d3.v3.js"></script>
+
+  <script src="lib/nvd3/nv.d3.js"></script>
   
-  <script src="http://d3js.org/d3.v3.min.js"></script>
-    
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body ng-app="film_factor" ng-controller="film_factor_controller">
-       <div id="d3bar" 
-            angulard3-bar-graph datajson="'top-rentals.json'" 
-            data
-            xaxis-name = "'Year'" 
-            xaxis-pos = "905"  
-            yaxis-name = "'Rating'" 
-            yaxis-pos = "6" 
-            d3-format= "'.00%'" >
-    </div>
-  </table>
+        <svg bubble-chart id="main-chart"></svg> 
 </body>
 </html>
