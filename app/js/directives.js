@@ -21,8 +21,8 @@ angular.module('film_factor.directives', []).
                 console.log(elem);
                 nv.addGraph(function() {
                     var index = 2;
-                    var x = 12;
-                    var y = 200;
+                    var x = 200;
+                    var y = 10;
                     var chart = nv.models.scatterChart()
                                 .showXAxis(false)
                                 .showYAxis(false)
@@ -31,19 +31,21 @@ angular.module('film_factor.directives', []).
                                 .height(500)
                                 .tooltipContent(function(){
                                     return 'cock';
-                                });
-    
-                    // .showDistX(true)
-                    // .showDistY(true)
-                    // .color(d3.scale.category10().range()); 
-                    // chart.xAxis.tickFormat(d3.format('.02f'))
-                    // chart.yAxis.tickFormat(d3.format('.02f'))
+                                })
+                                .color(d3.scale.category10().range());
 
-                    // console.log(nv.showTooltip());
+
+                    // animation example
                     d3.select(elem[0])
-                        .datum(aap(4,40))
-                          .transition().duration(500)
+                        .datum(aap(2,40))
+                          .transition().duration(1200)
                     .call(chart);
+
+                     d3.select(elem[0])
+                        .datum(aap(2,20))
+                          .transition().duration(1200)
+                    .call(chart);
+
                     nv.utils.windowResize(chart.update);    
 
                     return chart; 

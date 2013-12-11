@@ -5,10 +5,10 @@
 
 // EXAMPLE API CALL FOR FOOTBALL STATS
 angular.module('film_factor.services', []).
-  factory('statsfcApiService', function($http) {
-  	var statsfcApi = {};
+  factory('maiVCApiService', function($http) {
+  	var maiVCApiService = {};
       
-  	statsfcApi.getTopScorers = function() {
+  	maiVCApiService.getGenreData = function() {
   		return $http({
   			method: 'GET',
   			url: 'https://willjw-statsfc-competitions.p.mashape.com/results.json?key=free&competition=premier-league&team=liverpool&year=2013%2F2014&from=2013-01-01&to=2013-12-31&timezone=Europe%2FLondon&limit=10',
@@ -16,6 +16,6 @@ angular.module('film_factor.services', []).
   		});
   	};
       
-  	return statsfcApi;
+  	return maiVCApiService;
   });
 

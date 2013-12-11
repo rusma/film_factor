@@ -3,15 +3,23 @@
 /* Controllers */
 
 angular.module('film_factor.controllers', []).
-    controller('film_factor_controller', function($scope, statsfcApiService) {
-        statsfcApiService.getTopScorers().success(function(response){
-            if(response.length != 0 || response.error != null) {
-//                console.log(response);
-                $scope.topscorersList = [];
+    controller('film_factor_controller', function($scope, maiVCApiService, localStorageService) {
+        $scope.loadGenre = function() {
+            var dfrd = $.Deferred();
 
-                $scope.topscorersList = response;
+            console.log(localStorageService.get('topscorersPL'));
+            if(localStorageService.get('localStorageKey') !== null) {
+                maiVCApiService.getGenreData().success(function(response){
+                    if(response.length != 0 || response.error != null) {
+                        localStorageService.add('genreData',response);
+                        dfrd.resolve(response);
+                    }
+                });
             } else {
-                //provide placeholder
+                var response = localStorageService.get('genreData');
+                dfrd.resolve(response);
             }
-        });
+
+            return dfrd.promise();
+        }
    	});

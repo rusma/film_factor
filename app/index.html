@@ -3,25 +3,31 @@
 <head>
   <meta charset="utf-8">
   <title>Film Factor</title>
-<script src="lib/angular/angular.js"></script>
+  <!-- Angular stuff -->
+  <script src="lib/angular/angular.js"></script>
   <script src="lib/angular/angular-route.js"></script>
+  <!-- Third party angular module  -->
+  <script src="lib/angular-local-storage.js"></script>
+
+  <!-- Other third pary libs -->
   <script src="lib/jquery-latest.min.js"></script>
   <script src="lib/underscore.js"></script>
+  <script src="lib/d3.v3.js"></script>
+  <script src="lib/nvd3/nv.d3.js"></script>
+
+  <!-- Angular custom scripts -->
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
 
-  <link href="css/nv.d3.css" rel="stylesheet" type="text/css">
-
-  <script src="lib/d3.v3.js"></script>
-
-  <script src="lib/nvd3/nv.d3.js"></script>
-  
+  <link href="css/vendor/nv.d3.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body ng-app="film_factor" ng-controller="film_factor_controller">
-        <svg bubble-chart id="main-chart"></svg> 
+<body ng-app="film_factor">
+  <div class="container" ng-controller="film_factor_controller">
+      <svg bubble-chart id="main-chart"></svg> 
+  </div>
 </body>
 </html>
