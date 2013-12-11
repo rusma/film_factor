@@ -33,58 +33,17 @@ angular.module('film_factor.controllers', []).
                    values: []
                 });
 
-                var coordinates = $scope.getXandYForRatingAndFactor(i, Math.random(0,100), groups);
+                
                 for (var j = 0; j < 50; j++) {
-                    
+                    var coordinates = $scope.getXandYForRatingAndFactor(i, Math.floor(Math.random() * 100) +1, groups);  
                     data[i].values.push({
                         x: coordinates.x,
                         y: coordinates.y,
-                        size: Math.random()
+                        size: 1
                    //, shape: shapes[j % 6]
                     });
                 }
             }
-
-            // data.push({
-            //        key: 'Genre 0',
-            //        values: []
-            //     });
-
-            // var coordinates = $scope.getXandYForRatingAndFactor(6, 20, groups);
-            // data[0].values.push({
-            //             x: coordinates.x,
-            //             y: coordinates.y,
-            //             size: 30
-            //        //, shape: shapes[j % 6]
-            //         });
-
-
-            //    data.push({
-            //        key: 'Genre 1',
-            //        values: []
-            //     });
-
-            // var coordinates = $scope.getXandYForRatingAndFactor(11, 90, groups);
-            // data[1].values.push({
-            //             x: coordinates.x,
-            //             y: coordinates.y,
-            //             size: 10
-            //        //, shape: shapes[j % 6]
-            //         });
-
-            //      data.push({
-            //        key: 'Genre 2',
-            //        values: []
-            //     });
-
-            // var coordinates = $scope.getXandYForRatingAndFactor(18, 90, groups);
-            // data[2].values.push({
-            //             x: coordinates.x,
-            //             y: coordinates.y,
-            //             size: 20
-            //        //, shape: shapes[j % 6]
-            //         });
-            // console.log(data);
             return data;
         };
 
@@ -95,8 +54,10 @@ angular.module('film_factor.controllers', []).
              //16.363636363636363 controllers.js:67
 
             console.log('d f group ' + degrees_for_group)
+            var end_of_group = Math.random() * (degrees_for_group * 2);
 
-            var location = degrees_for_group * group_index;
+            console.log(degrees_for_group, end_of_group);
+            var location = (Math.floor( end_of_group ) + ( degrees_for_group ) ) * group_index;
             console.log('location ' + location )
             //location 98.18181818181819 
             var pi = Math.PI;
