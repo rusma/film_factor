@@ -24,19 +24,17 @@ angular.module('film_factor.directives', []).
                                     return graph.point.title + " <br> Rating: " + graph.point.rating;
                                 });
 
-                    var tickMarks = [0, -50, 50, 100];
+                    // var tickMarks = [0, -50, 50, 100];
 
-
-                    chart.xAxis
-                        .tickValues(tickMarks)
-                        .tickFormat(function(d){ return d });
-
-                    chart.yAxis
-                        .tickValues(tickMarks)
-                        .tickFormat(function(d){ return d });
+                    // chart.xAxis
+                    //     .tickValues(tickMarks)
+                    //     .tickFormat(function(d){ return d });
+                    // chart.yAxis
+                    //     .tickValues(tickMarks)
+                    //     .tickFormat(function(d){ return d });
 
                     d3.select(elem[0])
-                        .datum(scope.generateRandomData())
+                        .datum(scope.generateRandomGenreMoviesData())
                           .transition().duration(1000)
                     .call(chart);
 

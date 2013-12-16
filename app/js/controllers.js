@@ -4,6 +4,24 @@
 
 angular.module('film_factor.controllers', []).
     controller('film_factor_controller', function($scope, maiVCApiService, localStorageService) {
+        $scope.genres = {
+            1: "erotic",
+            2: "horror",
+            4: "romance",
+            6: "comedy",
+            7: "drama",
+            8: "kids-family",
+            9: "science-fiction-fantasy",
+            10: "fantasy",
+            11: "action-adventure",
+            12: "action",
+            13: "crime",
+            14: "family",
+            16: "thriller",
+            17: "adventure",
+            18: "science-fiction"
+        };
+
         $scope.getGenreMovies = function() {
             var dfrd = $.Deferred();
 
@@ -26,24 +44,7 @@ angular.module('film_factor.controllers', []).
 
         $scope.processGenreMovies = function(unfiltered_movie_data) {
             var movies = [];
-            var genres = {
-                1: "erotic",
-                2: "horror",
-                4: "romance",
-                6: "comedy",
-                7: "drama",
-                8: "kids-family",
-                9: "science-fiction-fantasy",
-                10: "fantasy",
-                11: "action-adventure",
-                12: "action",
-                13: "crime",
-                14: "family",
-                16: "thriller",
-                17: "advendture",
-                18: "science-fiction"
-            };
-
+            var genres = $scope.genres;
 
             //only works in modern browsers
             var group_length = ( Object.keys(genres).length ) ? Object.keys(genres).length : 15;
@@ -93,28 +94,10 @@ angular.module('film_factor.controllers', []).
             return movies;
         },
 
-        $scope.generateRandomData = function() {
-            var movies = [];
-
-            var genres = {
-                1: "erotic",
-                2: "horror",
-                4: "romance",
-                6: "comedy",
-                7: "drama",
-                8: "kids-family",
-                9: "science-fiction-fantasy",
-                10: "fantasy",
-                11: "action-adventure",
-                12: "action",
-                13: "crime",
-                14: "family",
-                16: "thriller",
-                17: "advendture",
-                18: "science-fiction"
-            };
-
-            var group_length = ( Object.keys(genres).length ) ? Object.keys(genres).length : 15;
+        $scope.generateRandomGenreMoviesData = function() {
+            var movies = [],
+                genres = $scope.genres,
+                group_length = ( Object.keys(genres).length ) ? Object.keys(genres).length : 15;
 
               _.each(genres, function(val, key){
                     movies.push({
@@ -124,7 +107,6 @@ angular.module('film_factor.controllers', []).
                        values: []
                     });
                 });
-
 
                 for(var i in movies) {
                     for (var j = 0; j < 50; j++) {
@@ -138,7 +120,6 @@ angular.module('film_factor.controllers', []).
                     }
                 }
 
-                console.log(movies);
                 return movies;
             },
 
