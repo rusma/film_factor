@@ -7,15 +7,14 @@
 angular.module('film_factor.services', []).
   factory('maiVCApiService', function($http) {
   	var maiVCApiService = {};
-      
-  	maiVCApiService.getGenreData = function() {
+
+  	maiVCApiService.getGenreMovies = function() {
   		return $http({
   			method: 'GET',
-  			url: 'https://willjw-statsfc-competitions.p.mashape.com/results.json?key=free&competition=premier-league&team=liverpool&year=2013%2F2014&from=2013-01-01&to=2013-12-31&timezone=Europe%2FLondon&limit=10',
-  			headers: {"X-Mashape-Authorization": "kFv3KUMDpoxt98Rh6u9ytW5IEpEWdKqQ"}
+        url: 'https://dl.dropboxusercontent.com/s/jjnme1btfyfz6jq/movies-with-genre-ids.json?dl=1&token_hash=AAEYgUhVTBQuFk7d3u1LJ99Yugc8kdP4GIF5Z6zM2L6J5w',
   		});
   	};
-      
+
   	return maiVCApiService;
   });
 
