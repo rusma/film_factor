@@ -1,0 +1,10 @@
+main_controller 
+	initChart
+	renderChart
+	events - data opvragen uit data controlle en de chart re renderen
+
+graph_data_controller
+	$scope.genres
+	getDataA
+	getDataB
+	randomData

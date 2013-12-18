@@ -1,9 +1,11 @@
 'use strict';
 
-/* Controllers */
+/* GRAPH DATA CONTROLLER */
 
-angular.module('film_factor.controllers', []).
-    controller('film_factor_controller', function($scope, maiVCApiService, localStorageService) {
+/**** THIS CONTROLLER GETS THE DATA FOR ALL KIND OF FILTERS AND SUBFACTORS****/
+
+angular.module('film_factor.controllers').
+    controller('graph_data_controller', function($scope, maiVCApiService, localStorageService) {
         $scope.genres = {
             0: {"genre_id": 1, "genre": "erotic"},
             1: {"genre_id": 2, "genre": "horror"},
@@ -28,6 +30,8 @@ angular.module('film_factor.controllers', []).
             20: {"genre_id": 27, "genre": "war"},
             21: {"genre_id": 32, "genre": "eastern"}
         };
+
+        //PLAIN MOVIE-GENRE DATA
 
         $scope.getGenreMovies = function() {
             var dfrd = $.Deferred();
@@ -62,21 +66,13 @@ angular.module('film_factor.controllers', []).
 
                 _.each(genres, function(val, key){
 
-                    if(test < 22) {
-
                     movies.push({
                         id: key,
                         key: val.genre,
                         data: val,
                         values: []
                     });
-                    test++;
-                    } else {
-                        return false;
-                    }
                 });
-
-
 
             //giant loop structure - performance intensive - figure something else for this
             _.each(unfiltered_movie_data, function(unfiltered_movie_data_val, unfiltered_movie_key){
@@ -115,6 +111,10 @@ angular.module('film_factor.controllers', []).
             return movies;
         },
 
+
+
+        /*** MISC FUNCTIONS ****/
+        
         $scope.generateRandomGenreMoviesData = function() {
             var movies = [],
                 genres = $scope.genres,
@@ -129,7 +129,7 @@ angular.module('film_factor.controllers', []).
                 });
 
                 for(var i in movies) {
-                    for (var j = 0; j < 20; j++) {
+                    for (var j = 0; j < 5; j++) {
                         var coordinates = $scope.getXandYForRatingAndFactor(i, Math.floor(Math.random() * 100) + 1, group_length);
                         movies[i].values.push({
                             x: coordinates.x,
@@ -157,7 +157,7 @@ angular.module('film_factor.controllers', []).
 			var begin_of_group = degrees_for_group * group_index;
 			
 			// location randomnly between twe beginning and end of a group.
-            var location =  Math.random()*(begin_of_group-end_of_group+1)+end_of_group
+            var location =  Math.random() * (begin_of_group - end_of_group + 1) + end_of_group
 
             var pi = Math.PI;
             var x = Math.sin(location * pi / 180) * ((rating -100) * -1);
@@ -168,7 +168,5 @@ angular.module('film_factor.controllers', []).
             return {x: x, y: y};
 
         };
-
-        $scope.randomData
 
    	});
