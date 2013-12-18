@@ -29,8 +29,11 @@ angular.module('film_factor.controllers', []).
                                 return graph.point.title + 
                                 " <br> Rating: " + graph.point.rating + 
                                 "<br> " + graph.point.genre;
-                            });
-                            
+                                
+                          });
+                          
+                 
+                          
                  nv.utils.windowResize($scope.chart.update);
 
                  dfrd.resolve();
@@ -44,6 +47,24 @@ angular.module('film_factor.controllers', []).
                 .datum(data)
                   .transition().duration(800)
             .call($scope.chart);
+            for(var i = 0; i<16; i++){
+	                 var translateX = 0;
+	                 var translateY = 18 * i;
+	                 
+	                 if(i > 8){
+		                var newY = i;
+		                newY -= 7;
+		                translateY = newY * 18;
+		                translateX = 75;
+	                 }
+	                 
+	                 console.log(translateX)
+	                 console.log(translateY)
+	                 console.log(d3.select(".nv-series:nth-child(1)"));
+	                 d3.select(".nv-series:nth-child("+i+")")
+					 	.attr("transform", "translate("+translateX+","+translateY+")");
+                 }     
+			
         };
 
    	});
