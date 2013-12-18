@@ -9,48 +9,46 @@ angular.module('film_factor.directives', []).
             restrict: 'A', // Directive Scope is Attribute
             link: function (scope, elem, attrs) {
                 // The d3.js code for generation of bar graph. further reading should be done from http://d3js.org/
-                console.log(elem);
                 nv.addGraph(function() {
-                    var index = 2;
                     var chart = nv.models.scatterChart()
                                 .width(600)
                                 .height(600)
-                                .showXAxis(true)
-                                .showYAxis(true)
+                                .showXAxis(false)
+                                .showYAxis(false)
                                 .forceX([-100,100])
                                 .forceY([-100,100])
                                 .tooltips(true)
-                                .showLegend(false)
-                                .tooltipContent(function(){
-                                    return 'clock';
+                                .showLegend(true)
+                                .color(﻿["CD4A4A", "FD5E53","EA7E5D","FF8243","D68A59","FFA343","8A795D","FCE883","FDFC74","1DF914","1CAC78","17806D","80DAEB","9ACEEB","C5D0E6","ADADD6","CDA4DE","FF1DCE","6E5160","F75394","DE5D83","EE204D"])
+                                .tooltipContent(function(key, y, e, graph){
+                                    return graph.point.title + " <br> Rating: " + graph.point.rating + "<br> " + graph.point.genre;
                                 });
-                                //.color(d3.scale.category10().range());
-
+                    console.log(d3.scale.category20().range());
                     var tickMarks = [0, -50, 50, 100];
 
                     chart.xAxis
                         .tickValues(tickMarks)
                         .tickFormat(function(d){ return d });
-
-                            chart.yAxis
+                    chart.yAxis
                         .tickValues(tickMarks)
                         .tickFormat(function(d){ return d });
 
-                    // animation example
                     d3.select(elem[0])
-                        .datum(scope.getGenreData())
-                          .transition().duration(1200)
+                        .datum(scope.generateRandomGenreMoviesData())
+                          .transition().duration(1500)
                     .call(chart);
 
-                    //  d3.select(elem[0])
-                    //     .datum(aap(2,20))
-                    //       .transition().duration(1200)
-                    // .call(chart);
+                    scope.getGenreMovies().then(function(data){
+                        d3.select(elem[0])
+                            .datum(data)
+                              .transition().duration(1000)
+                        .call(chart);
+                    });
 
-                    nv.utils.windowResize(chart.update);    
+                    nv.utils.windowResize(chart.update);
 
-                    return chart; 
-                }); 
+                    return chart;
+                });
             }
        }
     });
