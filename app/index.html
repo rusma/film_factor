@@ -24,6 +24,17 @@
 
   <link href="css/vendor/nv.d3.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/app.css"/>
+
+  <!-- PRODUCTION
+  <script src="build/js/production.min.js"></script>
+  <link rel="stylesheet" href="build/css/build.min.css"/>
+
+  <!--load angular logic seperately because uglifying of this causes errors--><!--
+  <script src="js/services/services.js"></script>
+  <script src="js/controllers/controllers.js"></script>
+  <script src="js/filters/filters.js"></script>
+  <script src="js/directives/directives.js"></script>
+  -->
 </head>
 <body ng-app="film_factor">
   <div class="container" ng-controller="film_factor_controller">
