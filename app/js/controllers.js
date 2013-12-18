@@ -144,20 +144,21 @@ angular.module('film_factor.controllers', []).
             },
 
         $scope.getXandYForRatingAndFactor = function(group_index, rating, group_length) {
-            console.log(group_index, rating, group_length);
+            //console.log(group_index, rating, group_length);
 
             // console.log(group_index, rating, group_length);
             var degrees_for_group = 360 / group_length;
              //16.363636363636363 controllers.js:67
+		
+			 // calculate the end of a group (multiple amount of degrees with the group index + 1 times the degrees)
+            var end_of_group = (degrees_for_group * group_index) + degrees_for_group;
+			
+			// Calculate the beginning of the group ( multiple amount of degrees with the group index)
+			var begin_of_group = degrees_for_group * group_index;
+			
+			// location randomnly between twe beginning and end of a group.
+            var location =  Math.random()*(begin_of_group-end_of_group+1)+end_of_group
 
-            // console.log('d f group ' + degrees_for_group)
-            var end_of_group = Math.random() * (degrees_for_group * 2);
-
-            // console.log(degrees_for_group, end_of_group);
-            var location =  (Math.random() * end_of_group) + degrees_for_group * group_index;
-            //var location = (Math.floor( end_of_group ) + ( degrees_for_group ) ) * group_index;
-            // console.log('location ' + location )
-            //location 98.18181818181819
             var pi = Math.PI;
             var x = Math.sin(location * pi / 180) * ((rating -100) * -1);
             // console.log(x)
