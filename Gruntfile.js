@@ -59,7 +59,7 @@ module.exports = function(grunt) {
             files: ['app/*.html']
           },
           scripts: {
-            files: ['app/js/*.js'],
+            files: ['app/js/*.js', 'app/js/controllers/*.js'],
             tasks: ['jshint'],
             options: {
               spawn: false,

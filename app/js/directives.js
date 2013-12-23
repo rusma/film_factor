@@ -10,12 +10,12 @@ angular.module('film_factor.directives', []).
             link: function (scope, elem, attrs) {
                 var _scope = scope
                 var _elem = elem;
-                    
+
                 scope.initChart().then(function(){
                     scope.getGenreMovies().then(function(data){
                         _scope.renderChart(_elem[0], data);
                         //listen for other events from now on
-                        //$scope.listenForEvents()
+                        //_scope.listenForEvents()
                     });
                 });
             },

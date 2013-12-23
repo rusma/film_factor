@@ -40,10 +40,10 @@
 <body ng-app="film_factor">
   <div class="container" ng-controller="main_controller">
     <div id="chart-contaner" ng-controller="graph_data_controller">
-      <svg scatter-plot id="main-chart"></svg> 
+      <svg scatter-plot id="main-chart"></svg>
     </div>
     <div id="subfactors">
-      <input type="checkbox" ng-filter="filter">
+      <input type="radio" ng-click="changeGenre()">
     </div>
   </div>
 </body>
