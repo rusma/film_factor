@@ -74,6 +74,7 @@ angular.module('film_factor.controllers', []).
             };
 
             $scope.changeGenre = function() {
+                //broadcast the need for new data, graph_data_controller will pick it up
                 $scope.$broadcast('clickedRadioSubfactor', 'with this', 'and this argument');
             };
         }]);

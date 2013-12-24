@@ -2,9 +2,11 @@
 .container {
 	width: 800px;
 	margin: 0 auto;
+
 }
 #main-chart {
  /* width: 600px; */
   height: 600px;
   margin: 0 auto;
+  background-image: url("../img/stairs.jpg");
 }
