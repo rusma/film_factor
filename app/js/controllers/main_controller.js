@@ -23,9 +23,9 @@ angular.module('film_factor.controllers', []).
                                 .forceY([-100,100])
                                 .tooltips(true)
                                 .showLegend(true)
-                                .color(﻿["CD4A4A", "FD5E53","EA7E5D","FF8243","D68A59","FFA343","8A795D",
-                                    "FCE883","FDFC74","1DF914","1CAC78","17806D","80DAEB","9ACEEB",
-                                    "C5D0E6","ADADD6","CDA4DE","FF1DCE","6E5160","F75394","DE5D83","EE204D"])
+                                .color(﻿["FF7548", "CF7E56","FF9A4B","F9E28A","0BF956","14A372","335DE6",
+                                "7BD5E6","7077B7","FF3ACA","7A3DAC","DF6F8F","EB4847","98000B",
+                                "B2B2B2","FFFFFF"])                                
                                 .tooltipContent(function(key, y, e, graph){
                                     return graph.point.title +
                                     " <br> Rating: " + graph.point.rating +
@@ -53,24 +53,18 @@ angular.module('film_factor.controllers', []).
             //TO DO: add comments to this fucntion
             $scope.transformLegend = function() {
                 var translate_x,
-                    translate_y,
-                    new_translate_y
+                    translate_y
+                    
+	                for(var i = 0; i<16; i++){
+		                 translate_x = 0;
+		                 translate_y = 18 * i;
+		                 
+	
+		                 d3.select(".nv-series:nth-child("+i+")")
+						 	.attr("transform", "translate("+translate_x+","+translate_y+")");
+	                 }     
+					 d3.select(".nv-legendWrap").attr("transform", "translate(530, 70)");
 
-                for(var i = 0; i < 16; i++) {
-                    translate_x = 0;
-                    translate_y = 18 * i;
-
-                    if(i > 8){
-                        new_translate_y = i;
-                        new_translate_y -= 7;
-
-                        translate_y = new_translate_y * 18;
-                        translate_x = 75;
-                    }
-
-                    d3.select(".nv-series:nth-child(" + i + ")")
-                        .attr("transform", "translate("+ translate_x + "," + translate_y + ")");
-                }
             };
 
             $scope.changeGenre = function() {

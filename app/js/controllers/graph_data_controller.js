@@ -11,29 +11,23 @@ angular.module('film_factor.controllers').
             $scope.$on('clickedRadioSubfactor', getNewSubfactorData);
 
             $scope.genres = {
-                0: {"genre_id": 1, "genre": "erotic"},
-                1: {"genre_id": 2, "genre": "horror"},
-                2: {"genre_id": 4, "genre": "romance"},
-                3: {"genre_id": 6, "genre": "comedy"},
-                4: {"genre_id": 7, "genre": "drama"},
-                5: {"genre_id": 8, "genre": "kids-family"},
-                6: {"genre_id": 9, "genre": "romance"},
-                7: {"genre_id": 10, "genre": "fantasy"},
-                8: {"genre_id": 11, "genre": "action-adventure"},
-                9: {"genre_id": 12, "genre": "action"},
-                10: {"genre_id": 13, "genre": "crime"},
-                11: {"genre_id": 14, "genre": "family"},
-                12: {"genre_id": 16, "genre": "thriller"},
-                13: {"genre_id": 17, "genre": "adventure"},
-                14: {"genre_id": 18, "genre": "science-fiction"},
-                15: {"genre_id": 19, "genre": "animation"},
-                16: {"genre_id": 20, "genre": "documentary"},
-                17: {"genre_id": 21, "genre": "music"},
-                18: {"genre_id": 25, "genre": "western"},
-                19: {"genre_id": 26, "genre": "sports-film"},
-                20: {"genre_id": 27, "genre": "war"},
-                21: {"genre_id": 32, "genre": "eastern"}
-            };
+	            0: {"genre_id": 1, "genre": "action"},
+	            1: {"genre_id": 2, "genre": "adventure"},
+	            2: {"genre_id": 4, "genre": "animation"},
+	            3: {"genre_id": 6, "genre": "comedy"},
+	            4: {"genre_id": 7, "genre": "crime"},
+	            5: {"genre_id": 8, "genre": "drama"},
+	            6: {"genre_id": 9, "genre": "family"},
+	            7: {"genre_id": 10, "genre": "fantasy"},
+	            8: {"genre_id": 11, "genre": "horror"},
+	            9: {"genre_id": 12, "genre": "kids & family"},
+	            10: {"genre_id": 13, "genre": "romance"},
+	            11: {"genre_id": 14, "genre": "science-fiction"},
+	            12: {"genre_id": 16, "genre": "thriller"},
+	            13: {"genre_id": 17, "genre": "western"},
+	            14: {"genre_id": 18, "genre": "war"},
+	      
+	        };
 
             //PLAIN MOVIE-GENRE DATA
 
@@ -108,13 +102,6 @@ angular.module('film_factor.controllers').
                                 });
                             }
                         });
-                    }
-                });
-
-
-                return movies;
-            },
-
 
 
             /*** MISC FUNCTIONS ****/
@@ -146,7 +133,7 @@ angular.module('film_factor.controllers').
                     }
 
                     return movies;
-                },
+            };
 
             $scope.getXandYForRatingAndFactor = function(group_index, rating, group_length) {
                 //console.log(group_index, rating, group_length);
