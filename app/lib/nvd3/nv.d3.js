@@ -11618,7 +11618,8 @@ nv.models.scatterChart = function() {
     , distY        = nv.models.distribution()
     ;
 
-  var margin       = {top: 30, right: 20, bottom: 50, left: 75}
+    //changed 30 to 0
+  var margin       = {top: -10, right: 20, bottom: 50, left: 75}
     , width        = null
     , height       = null
     , color        = nv.utils.defaultColor()
@@ -11788,21 +11789,23 @@ nv.models.scatterChart = function() {
       // Legend
 
       if (showLegend) {
+        console.log('kak');
         var legendWidth = (showControls) ? availableWidth / 2 : availableWidth;
-        legend.width(legendWidth);
+        legend.width(50);
 
         wrap.select('.nv-legendWrap')
             .datum(data)
             .call(legend);
 
-        if ( margin.top != legend.height()) {
-          margin.top = legend.height();
-          availableHeight = (height || parseInt(container.style('height')) || 400)
-                             - margin.top - margin.bottom;
-        }
+        // if ( margin.top != legend.height()) {
+        //   margin.top = legend.height();
+        //   availableHeight = (height || parseInt(container.style('height')) || 400)
+        //                      - margin.top - margin.bottom;
+        // }
 
         wrap.select('.nv-legendWrap')
-            .attr('transform', 'translate(' + (availableWidth - legendWidth) + ',' + (-margin.top) +')');
+            //.attr('transform', 'translate(' + (availableWidth - legendWidth) + ',' + (-margin.top) +')');
+            .attr('transform', 'translate(530, 70)');
       }
 
       //------------------------------------------------------------
@@ -11982,6 +11985,7 @@ nv.models.scatterChart = function() {
       //------------------------------------------------------------
 
       controls.dispatch.on('legendClick', function(d,i) {
+        console.log('hoort bij deze');
         d.disabled = !d.disabled;
 
         fisheye = d.disabled ? 0 : 2.5;

@@ -36,7 +36,12 @@ angular.module('film_factor.controllers', []).
 
                      //deffered resolve
                      dfrd.resolve();
+              
+
+
                 });
+
+               
 
                 return dfrd.promise();
             };
@@ -48,11 +53,21 @@ angular.module('film_factor.controllers', []).
                       .transition().duration(800)
                 .call($scope.chart);
 
-                $scope.transformLegend();
+                //$scope.transformLegend();
+
+                $scope.chart.legend.dispatch.on('legendClick', function(e){
+                    console.log('does this happen');
+                    //$scope.transformLegend();
+                });
             };
 
             //TO DO: add comments to this fucntion
             $scope.transformLegend = function() {
+                d3.select(".nv-wrap").attr("transform", "translate(0, 0)");
+
+            
+                console.log('transformed legend');
+             
                 var translate_x,
                     translate_y
                     

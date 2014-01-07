@@ -47,9 +47,17 @@
       <svg scatter-plot style="" id="main-chart"></svg>
     </div>
 
-    <div id="subfactors">
-      <input type="radio" ng-click="changeGenre()">
-    </div>
+    <div class="radio-toolbar">
+      <input type="radio" id="radio1" name="radios" value="all" checked>
+      <label for="radio1">Genre</label>
+
+      <input type="radio" id="radio2" name="radios"value="false">
+      <label for="radio2">Lengte</label>
+
+      <input type="radio" id="radio3" name="radios" value="true">
+      <label for="radio3">Release date</label> 
+
+  </div>
   </div>
 </body>
 </html>
