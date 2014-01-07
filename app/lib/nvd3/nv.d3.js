@@ -11791,7 +11791,7 @@ nv.models.scatterChart = function() {
       if (showLegend) {
         console.log('kak');
         var legendWidth = (showControls) ? availableWidth / 2 : availableWidth;
-        legend.width(50);
+        legend.width(99);
 
         wrap.select('.nv-legendWrap')
             .datum(data)
