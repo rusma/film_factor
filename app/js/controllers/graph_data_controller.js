@@ -52,6 +52,7 @@ angular.module('film_factor.controllers').
             };
 
             $scope.processGenreMovies = function(unfiltered_movie_data) {
+                console.log(unfiltered_movie_data);
                 var movies = [];
                 var genres = $scope.genres;
 
@@ -62,15 +63,15 @@ angular.module('film_factor.controllers').
                 //this will contain our filtered data with x and y etc
                 var test = 0;
 
-                    _.each(genres, function(val, key){
+                _.each(genres, function(val, key){
 
-                        movies.push({
-                            id: key,
-                            key: val.genre,
-                            data: val,
-                            values: []
-                        });
+                    movies.push({
+                        id: key,
+                        key: val.genre,
+                        data: val,
+                        values: []
                     });
+                });
 
                 //giant loop structure - performance intensive - figure something else for this
                 _.each(unfiltered_movie_data, function(unfiltered_movie_data_val, unfiltered_movie_key){
@@ -102,7 +103,11 @@ angular.module('film_factor.controllers').
                                 });
                             }
                         });
+                    }
+                });
 
+                return movies;
+            };
 
             /*** MISC FUNCTIONS ****/
 

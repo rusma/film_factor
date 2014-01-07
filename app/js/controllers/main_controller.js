@@ -42,6 +42,7 @@ angular.module('film_factor.controllers', []).
             };
 
             $scope.renderChart = function(graph_elem, data) {
+                console.log(data);
                 d3.select(graph_elem)
                     .datum(data)
                       .transition().duration(800)
