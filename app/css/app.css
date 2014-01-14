@@ -59,6 +59,10 @@ header {
 }
 
 /*RADIO BUTTONS*/
+.radio-toolbar {
+	margin: 0 auto;
+	text-align:center;
+}
 .radio-toolbar input[type="radio"] {
     display:none; 
 }
@@ -104,9 +108,10 @@ header {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a323a', endColorstr='#505f6c',GradientType=0 ); /* IE6-9 */
 }
 
-#rating-filters {
+.rating-filters {
+	width: 100px;
 	float: right; 
-	margin-top: -120px;
-	margin-right: 500px;
+	margin-top: -200px;
+	margin-right: 310px;
 }
 
