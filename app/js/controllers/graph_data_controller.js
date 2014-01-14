@@ -127,7 +127,7 @@ angular.module('film_factor.controllers').
                     }
                 });
 
-console.log(movies);
+                console.log(movies);
 
                 return movies;
             };

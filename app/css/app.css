@@ -110,7 +110,9 @@ header {
 
 .rating-filters {
 	width: 100px;
+	color: white;
+	font-size: 12px;
 	float: right; 
 	margin-top: -200px;
-	margin-right: 310px;
+	margin-right: 323px;
 }

@@ -11639,8 +11639,8 @@ nv.models.scatterChart = function() {
     , fisheye      = 0
     , pauseFisheye = false
     , tooltips     = true
-    , tooltipX     = function(key, x, y) { return '<strong>' + x + '</strong>' }
-    , tooltipY     = function(key, x, y) { return '<strong>' + y + '</strong>' }
+    , tooltipX     = null//function(key, x, y) { return '<strong>' + x + '</strong>' }
+    , tooltipY     = null//function(key, x, y) { return '<strong>' + y + '</strong>' }
     , tooltip      = null
     , state = {}
     , defaultState = null
@@ -11682,14 +11682,16 @@ nv.models.scatterChart = function() {
   var showTooltip = function(e, offsetElement) {
     //TODO: make tooltip style an option between single or dual on axes (maybe on all charts with axes?)
 
-    var left = e.pos[0] + ( offsetElement.offsetLeft || 0 ),
-        top = e.pos[1] + ( offsetElement.offsetTop || 0),
-        leftX = e.pos[0] + ( offsetElement.offsetLeft || 0 ),
-        topX = y.range()[0] + margin.top + ( offsetElement.offsetTop || 0),
-        leftY = x.range()[0] + margin.left + ( offsetElement.offsetLeft || 0 ),
-        topY = e.pos[1] + ( offsetElement.offsetTop || 0),
-        xVal = xAxis.tickFormat()(scatter.x()(e.point, e.pointIndex)),
-        yVal = yAxis.tickFormat()(scatter.y()(e.point, e.pointIndex));
+    //I CHANGED SOMETHING HERE *** SOURCE EDIT
+    //***********************************
+    var left = 0, //e.pos[0] + ( offsetElement.offsetLeft || 0 ),
+        top = 0, //e.pos[1] + ( offsetElement.offsetTop || 0),
+        leftX = 0, //e.pos[0] + ( offsetElement.offsetLeft || 0 ),
+        topX = 0, //y.range()[0] + margin.top + ( offsetElement.offsetTop || 0),
+        leftY = 0, //x.range()[0] + margin.left + ( offsetElement.offsetLeft || 0 ),
+        topY = 0, //e.pos[1] + ( offsetElement.offsetTop || 0),
+        xVal = 0, //xAxis.tickFormat()(scatter.x()(e.point, e.pointIndex)),
+        yVal = 0; //yAxis.tickFormat()(scatter.y()(e.point, e.pointIndex));
 
       if( tooltipX != null )
           nv.tooltip.show([leftX, topX], tooltipX(e.series.key, xVal, yVal, e, chart), 'n', 1, offsetElement, 'x-nvtooltip');
