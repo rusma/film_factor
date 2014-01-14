@@ -48,20 +48,22 @@
     </div>
 
     <div class="rating-filters">
-      <input type="checkbox" id="audience" name="radios"value="false">
+      <input type="checkbox" ng-click="triggerRatingType('audience', audience_status)"
+       ng-true-value="off" ng-false-value="on" ng-model="audience_status" id="audience" name="radios" >
       <label for="audience">audience</label>
-      <input type="checkbox" id="critics" name="radios"value="false">
+      <input type="checkbox" ng-click="triggerRatingType('critics', critics_status)" 
+       ng-true-value="off" ng-false-value="on" ng-model="critics_status" id="critics" name="radios">
       <label for="critics">critics</label>
     </div>
 
     <div class="radio-toolbar">
-      <input type="radio" ng-click="changeGenre()" id="radio1" name="radios" value="all" checked>
+      <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" name="radios" value="all" checked>
       <label for="radio1">Genre</label>
 
-      <input type="radio" ng-click="changeGenre()" id="radio2" name="radios"value="false">
+      <input type="radio" ng-click="changeSubfactor('length')" id="radio2" name="radios"value="false">
       <label for="radio2">Lengte</label>
 
-      <input type="radio" ng-click="changeGenre()" id="radio3" name="radios" value="true">
+      <input type="radio" ng-click="changeSubfactor('release_date')" id="radio3" name="radios" value="true">
       <label for="radio3">Release date</label> 
     </div>
 

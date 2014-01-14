@@ -377,6 +377,7 @@ nv.models.scatterChart = function() {
       //------------------------------------------------------------
 
       controls.dispatch.on('legendClick', function(d,i) {
+        console.log('CLOCK');
         d.disabled = !d.disabled;
 
         fisheye = d.disabled ? 0 : 2.5;

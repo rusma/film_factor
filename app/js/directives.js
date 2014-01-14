@@ -12,7 +12,10 @@ angular.module('film_factor.directives', []).
                 var _elem = elem;
 
                 scope.initChart().then(function(){
+                    //start with the movies of genres
                     scope.getGenreMovies().then(function(data){
+                        console.log(data);
+                        // var data = _scope.generateRandomGenreMoviesData();
                         _scope.renderChart(_elem[0], data);
                         //listen for other events from now on
                         //_scope.listenForEvents()

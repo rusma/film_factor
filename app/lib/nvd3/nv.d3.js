@@ -2678,6 +2678,7 @@ nv.models.cumulativeLineChart = function() {
 
         if (typeof e.disabled !== 'undefined') {
           data.forEach(function(series,i) {
+            console.log(series);
             series.disabled = e.disabled[i];
           });
 
@@ -2687,6 +2688,7 @@ nv.models.cumulativeLineChart = function() {
 
         if (typeof e.index !== 'undefined') {
           index.i = e.index;
+          console.log(e.index);
           index.x = dx(index.i);
 
           state.index = e.index;
@@ -11788,8 +11790,8 @@ nv.models.scatterChart = function() {
       //------------------------------------------------------------
       // Legend
 
+      // ************ THIS IS ADJUSTED SOURCE CODE ****************/s
       if (showLegend) {
-        console.log('kak');
         var legendWidth = (showControls) ? availableWidth / 2 : availableWidth;
         legend.width(99);
 
@@ -11985,7 +11987,7 @@ nv.models.scatterChart = function() {
       //------------------------------------------------------------
 
       controls.dispatch.on('legendClick', function(d,i) {
-        console.log('hoort bij deze');
+        console.log('legendlcisdk');
         d.disabled = !d.disabled;
 
         fisheye = d.disabled ? 0 : 2.5;
@@ -14039,6 +14041,7 @@ nv.models.stackedAreaChart = function() {
       });
 
       controls.dispatch.on('legendClick', function(d,i) {
+        console.log('sdasasdasdasdasda');
         if (!d.disabled) return;
 
         controlsData = controlsData.map(function(s) {

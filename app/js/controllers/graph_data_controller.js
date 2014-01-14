@@ -8,6 +8,7 @@ angular.module('film_factor.controllers').
     controller('graph_data_controller', ['$scope', 'maiVCApiService', 'localStorageService',
 
         function($scope, maiVCApiService, localStorageService) {
+            $scope.active_subfactor = 'genre';
             $scope.$on('clickedRadioSubfactor', getNewSubfactorData);
 
             $scope.genres = {
@@ -26,6 +27,7 @@ angular.module('film_factor.controllers').
 	            12: {"genre_id": 16, "genre": "thriller"},
 	            13: {"genre_id": 17, "genre": "western"},
 	            14: {"genre_id": 18, "genre": "war"},
+                15: {"genre_id": 23, "genre": "sport and fitness"}
 	      
 	        };
 
@@ -51,25 +53,43 @@ angular.module('film_factor.controllers').
                 return dfrd.promise();
             };
 
+            $scope.getLengthMovies = function() {
+                var dfrd = $.Deferred();
+                console.log('get length movies');
+
+                if(localStorageService.get('lengthMovies') === null) {
+
+                }
+            };
+
+            $scope.getReleaseDateMovies = function() {
+                var dfrd = $.Deferred();
+                console.log('get releasedate movies');
+
+                if(localStorageService.get('releaseDateMovies') === null) {
+
+                }
+
+            };  
+
             $scope.processGenreMovies = function(unfiltered_movie_data) {
                 console.log(unfiltered_movie_data);
                 var movies = [];
                 var genres = $scope.genres;
 
                 //only works in modern browsers
-                var group_length = ( Object.keys(genres).length ) ? Object.keys(genres).length : 22;
+                var group_length = ( Object.keys(genres).length ) ? Object.keys(genres).length : 16;
 
                 //create array index for each genre in movies array
                 //this will contain our filtered data with x and y etc
-                var test = 0;
 
                 _.each(genres, function(val, key){
 
                     movies.push({
-                        id: key,
                         key: val.genre,
+                        values: [],
                         data: val,
-                        values: []
+                        id: key,
                     });
                 });
 
@@ -99,12 +119,15 @@ angular.module('film_factor.controllers').
                                             rating: unfiltered_movie_data_val.rating_tmdb_audience,
                                             genre: movie_val.data.genre
                                         });
+                                        
                                     }
                                 });
                             }
                         });
                     }
                 });
+
+console.log(movies);
 
                 return movies;
             };
@@ -126,12 +149,12 @@ angular.module('film_factor.controllers').
                     });
 
                     for(var i in movies) {
-                        for (var j = 0; j < 5; j++) {
+                        for (var j = 0; j < 20; j++) {
                             var coordinates = $scope.getXandYForRatingAndFactor(i, Math.floor(Math.random() * 100) + 1, group_length);
                             movies[i].values.push({
                                 x: coordinates.x,
                                 y: coordinates.y,
-                                size: 1
+                                size: 2
                                 //, shape: shapes[j % 6]
                             });
                         }
@@ -154,7 +177,7 @@ angular.module('film_factor.controllers').
     			var begin_of_group = degrees_for_group * group_index;
 
     			// location randomnly between twe beginning and end of a group.
-                var location =  Math.random() * (begin_of_group - end_of_group + 1) + end_of_group
+                var location = Math.random() * (begin_of_group - end_of_group + 1) + end_of_group
 
                 var pi = Math.PI,
                 x = Math.sin(location * pi / 180) * ((rating -100) * -1),
@@ -165,8 +188,42 @@ angular.module('film_factor.controllers').
             };
 
             //dont bind this one to the scope because its triggerable by broadcast event
-            function getNewSubfactorData(a, b, c) {
-                console.log('getting new data',a,b,c);
+            function getNewSubfactorData(name, type) {
+                var change_to_subfactor = type,
+                    movie_data;
+
+                //check what genre is active
+                if( $scope.active_subfactor === change_to_subfactor ) {
+                    return;
+                }
+
+                switch(change_to_subfactor) {
+                    case 'genre':
+                        $scope.active_subfactor = change_to_subfactor;
+                        movie_data = $scope.getGenreMovies();
+                        break;
+                    case 'length':
+                        $scope.active_subfactor = change_to_subfactor;
+                        movie_data = $scope.getLengthMovies();
+                        break;
+
+                    case 'release_date':
+                        $scope.active_subfactor = change_to_subfactor;
+                        movie_data = $scope.getReleaseDateMovies();
+                        break;
+                    
+                    default:
+                        movie_data = null;
+
+                }
+
+
+                if(movie_data !== null) {
+                    return movie_data;
+                } else {
+                    return 'error no movie data';
+                }
+
             };
 
    	    }]);
