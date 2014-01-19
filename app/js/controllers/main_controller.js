@@ -64,7 +64,7 @@ angular.module('film_factor.controllers', []).
                     $scope.svg_elem = graph_elem;
                 } else {
                     d3.select($scope.svg_elem)
-                    .datum(data)
+                    .datum(data.audience.concat(data.critics))
                           .transition().duration(800)
                     .call($scope.chart);
                 }

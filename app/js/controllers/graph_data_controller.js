@@ -45,6 +45,7 @@ angular.module('film_factor.controllers').
             $scope.getGenreMovies = function() {
                 var dfrd = $.Deferred();
 
+                //http://docs.angularjs.org/api/ngCookies.$cookieStore
                 localStorageService.set('genreMovies', null);
                 if(localStorageService.get('genreMovies') === null) {
                     $scope.loader(false);
@@ -70,6 +71,7 @@ angular.module('film_factor.controllers').
                 console.log('get length movies');
 
                 //localStorageService.set('lengthMovies', null);
+                //http://docs.angularjs.org/api/ngCookies.$cookieStore
                 if(localStorageService.get('lengthMovies') === null) {
                     $scope.loader(false);
                     window.received_data = function(response) {
