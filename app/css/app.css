@@ -54,7 +54,7 @@ header {
   margin-left: 140px;
   background-image: url(../img/circle_genre.png);
   background-repeat:no-repeat;
-  background-position-y: 20px; 
+  background-position-y: 20px;
   background-position-x: 30px;
 }
 
@@ -64,7 +64,7 @@ header {
 	text-align:center;
 }
 .radio-toolbar input[type="radio"] {
-    display:none; 
+    display:none;
 }
 
 .radio-toolbar label:first-of-type{
@@ -97,7 +97,7 @@ header {
     text-shadow: 1px 1px #333;
 }
 
-.radio-toolbar input[type="radio"]:checked + label { 
+.radio-toolbar input[type="radio"]:checked + label {
     background: #2a323a; /* Old browsers */
 	background: -moz-linear-gradient(top,  #2a323a 0%, #505f6c 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2a323a), color-stop(100%,#505f6c)); /* Chrome,Safari4+ */
@@ -112,7 +112,40 @@ header {
 	width: 100px;
 	color: white;
 	font-size: 12px;
-	float: right; 
+	float: right;
 	margin-top: -200px;
 	margin-right: 323px;
+}
+/* Tooltip */
+
+.tooltip {
+	padding: 10px 5px;
+	display: block;
+	width: 150px;
+}
+
+/* AJAX-LOADER */
+
+#loader {
+	display: none;
+	text-align: center;
+	position:absolute;
+	left: 42%;
+	top: 42%;
+	color: white;
+	z-index:9999;
+}
+
+
+.overlay {
+	display: none;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:rgba(0, 0, 0, 0.5);
+    background: url(data:;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuNUmK/OAAAAATSURBVBhXY2RgYNgHxGAAYuwDAA78AjwwRoQYAAAAAElFTkSuQmCC) repeat scroll transparent\9; /* ie fallback png background image */
+    z-index:9998;
+    color:white;
 }

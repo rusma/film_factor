@@ -28,26 +28,38 @@ angular.module('film_factor.controllers').
 	            13: {"genre_id": 17, "genre": "western"},
 	            14: {"genre_id": 18, "genre": "war"},
                 15: {"genre_id": 23, "genre": "sport and fitness"}
-	      
 	        };
+
+            $scope.loader = function(remove) {
+                if(remove === true) {
+                    $('.overlay').hide();
+                    $('#loader').hide();
+                } else {
+                    $('.overlay').show();
+                    $('#loader').show();
+                }
+            };
 
             //PLAIN MOVIE-GENRE DATA
 
             $scope.getGenreMovies = function() {
                 var dfrd = $.Deferred();
 
+                localStorageService.set('genreMovies', null);
                 if(localStorageService.get('genreMovies') === null) {
-                    maiVCApiService.getGenreMovies().success(function(response){
+                    $scope.loader(false);
+                    window.received_data = function(response) {
                         if(response.length != 0 || response.error != null) {
                             localStorageService.add('genreMovies', response);
-                            var processedGenreMovies = $scope.processGenreMovies(response);
-                            dfrd.resolve(processedGenreMovies);
+                            $scope.loader(true);
+                            dfrd.resolve(response);
                         }
-                    });
+                    };
+
+                    maiVCApiService.getGenreMovies();
                 } else {
                     var response = localStorageService.get('genreMovies');
-                    var processedGenreMovies = $scope.processGenreMovies(response);
-                    dfrd.resolve(processedGenreMovies);
+                    dfrd.resolve(response);
                 }
 
                 return dfrd.promise();
@@ -57,9 +69,24 @@ angular.module('film_factor.controllers').
                 var dfrd = $.Deferred();
                 console.log('get length movies');
 
+                //localStorageService.set('lengthMovies', null);
                 if(localStorageService.get('lengthMovies') === null) {
+                    $scope.loader(false);
+                    window.received_data = function(response) {
+                        if(response.length != 0 || response.error != null) {
+                            localStorageService.add('lengthMovies', response);
+                            $scope.loader(true);
+                            dfrd.resolve(response);
+                        }
+                    };
 
+                    maiVCApiService.getLengthMovies();
+                } else {
+                    var response = localStorageService.get('lengthMovies');
+                    dfrd.resolve(response);
                 }
+
+                return dfrd.promise();
             };
 
             $scope.getReleaseDateMovies = function() {
@@ -67,13 +94,23 @@ angular.module('film_factor.controllers').
                 console.log('get releasedate movies');
 
                 if(localStorageService.get('releaseDateMovies') === null) {
+                    $scope.loader(false);
+                     window.received_data = function(response) {
+                        if(response.length != 0 || response.error != null) {
+                            localStorageService.add('genreMovies', response);
+                            $scope.loader(true);
+                            dfrd.resolve(response);
+                        }
+                    };
 
+                    maiVCApiService.getReleaseDateMovies();
                 }
 
-            };  
+                return 'datemovies';
+
+            };
 
             $scope.processGenreMovies = function(unfiltered_movie_data) {
-                console.log(unfiltered_movie_data);
                 var movies = [];
                 var genres = $scope.genres;
 
@@ -119,15 +156,13 @@ angular.module('film_factor.controllers').
                                             rating: unfiltered_movie_data_val.rating_tmdb_audience,
                                             genre: movie_val.data.genre
                                         });
-                                        
+
                                     }
                                 });
                             }
                         });
                     }
                 });
-
-                console.log(movies);
 
                 return movies;
             };
@@ -188,7 +223,7 @@ angular.module('film_factor.controllers').
             };
 
             //dont bind this one to the scope because its triggerable by broadcast event
-            function getNewSubfactorData(name, type) {
+            function getNewSubfactorData(name, type, callback) {
                 var change_to_subfactor = type,
                     movie_data;
 
@@ -200,29 +235,37 @@ angular.module('film_factor.controllers').
                 switch(change_to_subfactor) {
                     case 'genre':
                         $scope.active_subfactor = change_to_subfactor;
-                        movie_data = $scope.getGenreMovies();
+                        movie_data = $scope.getGenreMovies().then(function(data){
+                            callback(data);
+                        });
                         break;
                     case 'length':
                         $scope.active_subfactor = change_to_subfactor;
-                        movie_data = $scope.getLengthMovies();
+                        $scope.getLengthMovies().then(function(data){
+                            callback(data);
+                        });
                         break;
 
                     case 'release_date':
                         $scope.active_subfactor = change_to_subfactor;
-                        movie_data = $scope.getReleaseDateMovies();
+                        $scope.getReleaseDateMovies().then(function(){
+                            callback(data);
+                        });
                         break;
-                    
+
                     default:
                         movie_data = null;
 
                 }
 
 
-                if(movie_data !== null) {
-                    return movie_data;
-                } else {
-                    return 'error no movie data';
-                }
+                // if(movie_data !== null) {
+                //     console.log(movie_data);
+                //     callback(movie_data);
+
+                // } else {
+                //     return 'error no movie data';
+                // }
 
             };
 

@@ -6,6 +6,6 @@ angular.module('film_factor', [
 	'LocalStorageModule',
   	'film_factor.controllers',
   	'film_factor.services',
-  	'film_factor.directives', 
+  	'film_factor.directives',
   	'film_factor.filters'
 ]);

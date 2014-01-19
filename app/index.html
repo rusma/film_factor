@@ -38,6 +38,14 @@
   -->
 </head>
 <body ng-app="film_factor">
+ <div id="loader">
+    <h2>Loading ..</h2>
+    <img class="loader" src="img/ajax-loader.gif">
+  </div>
+
+  <div class="overlay"></div>
+
+
   <div class="container" ng-controller="main_controller">
     <header>
 	    Compare movie subfactors with critics and audience ratings
@@ -52,7 +60,7 @@
       <input type="checkbox" ng-click="triggerRatingType('audience', audience_status)"
        ng-true-value="off" ng-false-value="on" ng-model="audience_status" id="audience" name="radios" >
       <label for="audience">audience</label><div class="clear"></div>
-      <input type="checkbox" ng-click="triggerRatingType('critics', critics_status)" 
+      <input type="checkbox" ng-click="triggerRatingType('critics', critics_status)"
        ng-true-value="off" ng-false-value="on" ng-model="critics_status" id="critics" name="radios">
       <label for="critics">critics</label>
     </div>
@@ -66,10 +74,8 @@
       <label for="radio2">Lengte</label>
 
       <input type="radio" ng-click="changeSubfactor('release_date')" id="radio3" name="radios" value="true">
-      <label for="radio3">Release date</label> 
+      <label for="radio3">Release date</label>
     </div>
-
-
   </div>
 </body>
 </html>

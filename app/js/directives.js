@@ -15,10 +15,8 @@ angular.module('film_factor.directives', []).
                     //start with the movies of genres
                     scope.getGenreMovies().then(function(data){
                         console.log(data);
-                        // var data = _scope.generateRandomGenreMoviesData();
-                        _scope.renderChart(_elem[0], data);
-                        //listen for other events from now on
-                        //_scope.listenForEvents()
+                         // var data = _scope.generateRandomGenreMoviesData();
+                        _scope.renderChart(data, _elem[0]);
                     });
                 });
             },

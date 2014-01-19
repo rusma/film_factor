@@ -9,10 +9,11 @@ angular.module('film_factor.services', []).
   	var maiVCApiService = {};
 
   	maiVCApiService.getGenreMovies = function() {
-  		return $http({
-  			method: 'GET',
-        url: 'https://dl.dropboxusercontent.com/s/jjnme1btfyfz6jq/movies-with-genre-ids.json?dl=1&token_hash=AAEYgUhVTBQuFk7d3u1LJ99Yugc8kdP4GIF5Z6zM2L6J5w',
-  		});
+  		return $http.jsonp('http://tff.maikelvlasman.com:8011/_api/movies/genre/1000');
+  	};
+
+  	maiVCApiService.getLengthMovies = function() {
+  		return $http.jsonp('http://tff.maikelvlasman.com:8011/_api/movies/runtime/1000');
   	};
 
   	return maiVCApiService;
