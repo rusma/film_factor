@@ -119,9 +119,79 @@ header {
 /* Tooltip */
 
 .tooltip {
-	padding: 10px 5px;
+	position: absolute;
+	padding: 10px;
+	display: inline-block;
+	height: 280px;
+	background: #2b333a;
+	color:#eee;
+	width:130px;
+	top: 100px;
+	left:20px;
+	box-shadow: inset 0px 0px 3px #222;
+	font-size:12px;
+}
+
+.information-tooltip {
+	position: absolute;
+	background: #252b31;
+	border: 1px solid #555;
+	box-shadow: 1px 0 3px #222;
+	margin-top:-24px;
+	margin-left:70px;
+	z-index:4;
+	width:100px;
+	padding:3px;
+	font-weight: normal;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.information-tooltip:after, .information-tooltip:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.information-tooltip:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-right-color: #252b31;
+	border-width: 10px;
+	margin-top: -10px;
+}
+.information-tooltip:before {
+	border-color: rgba(69, 80, 87, 0);
+	border-right-color: #555;
+	border-width: 11px;
+	margin-top: -11px;
+}
+
+.nvtooltip{
+	background: none!important;
+	border:none;
+}
+
+.title-tooltip{
 	display: block;
-	width: 150px;
+	font-weight: bold;
+	width:130px;
+	white-space: pre-wrap;
+	text-size:15px;
+	margin-bottom:10px;
+}
+.tooltip img{
+	width: 130px;
+	height: auto;
+}
+
+.tooltip p{
+	padding:0;
+	margin:3px 0px;
+	text-align: left;
 }
 
 /* AJAX-LOADER */
