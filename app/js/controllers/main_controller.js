@@ -8,15 +8,15 @@ angular.module('film_factor.controllers', []).
     controller('main_controller', ['$scope', 'maiVCApiService', 'localStorageService',
         function($scope, maiVCApiService, localStorageService) {
             $scope.chart = null;
-            $scope.critics_status = 'off'
-            $scope.audience_status = 'off';
             $scope.svg_elem = null;
+            $scope.active_data = null;
 
             $scope.initChart = function() {
-                //set local storage to null to get new movies
-                localStorageService.set('genreMovies', null);
-                localStorageService.set('lengthMovies', null);
-                localStorageService.set('releaseDataMovies', null);
+
+                //set local storage to null to get new movies each refresh
+                // localStorageService.set('genreMovies', null);
+                // localStorageService.set('lengthMovies', null);
+                // localStorageService.set('releaseDataMovies', null);
 
                 //use deffered to deal with async
                 var dfrd = $.Deferred();
@@ -58,6 +58,9 @@ angular.module('film_factor.controllers', []).
                 //after the first time passing the graph_elem is not required anymore
                 var selected_svg_elem;
 
+                //to switch later on between audience and critics
+                $scope.active_data = data;
+
                 //CHECK WHETHER WHAT KIND OF RATING IS TURNED ON
                 if($scope.svg_elem === null) {
                     selected_svg_elem = d3.select(graph_elem)
@@ -66,11 +69,24 @@ angular.module('film_factor.controllers', []).
                    selected_svg_elem = d3.select($scope.svg_elem)
                 }
 
+                //start with audience
                 selected_svg_elem.datum(data.audience)
                     .transition().duration(800)
                     .call($scope.chart);
+            };
 
+            $scope.renderRatingType = function(type) {
+                var selected_svg_elem = d3.select($scope.svg_elem),
+                    selected_svg_elem_with_data;
 
+                if(type === 'audience') {
+                    selected_svg_elem_with_data = selected_svg_elem.datum($scope.active_data.audience);
+                } else if(type === 'critics') {
+                    selected_svg_elem_with_data = selected_svg_elem.datum($scope.active_data.critics);
+                }
+
+                selected_svg_elem_with_data.transition().duration(1500)
+                    .call($scope.chart);
             };
 
             $scope.changeSubfactor = function(type) {
@@ -84,6 +100,6 @@ angular.module('film_factor.controllers', []).
             //@type = audience/critics
             //@status = on or off
             $scope.triggerRatingType = function(type, status) {
-                console.log(type, status);
-            }
+                $scope.renderRatingType(type);
+            };
         }]);

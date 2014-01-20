@@ -57,23 +57,24 @@
 
     <div class="rating-filters">
     <p>Type of rating ICON</p>
-      <input type="checkbox" ng-click="triggerRatingType('audience', audience_status)"
-       ng-true-value="off" ng-false-value="on" ng-model="audience_status" id="audience" name="radios" >
+      <input type="radio"  name="rating-radio"  checked ng-click="triggerRatingType('audience', true)"
+        id="audience" >
       <label for="audience">audience</label><div class="clear"></div>
-      <input type="checkbox" ng-click="triggerRatingType('critics', critics_status)"
-       ng-true-value="off" ng-false-value="on" ng-model="critics_status" id="critics" name="radios">
+
+      <input type="radio" name="rating-radio" ng-click="triggerRatingType('critics', true)"
+       id="critics">
+
       <label for="critics">critics</label>
     </div>
 
     <div class="radio-toolbar">
-
-      <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" name="radios" value="all" checked>
+      <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" value="all" checked>
       <label for="radio1">Genre</label>
 
-      <input type="radio" ng-click="changeSubfactor('length')" id="radio2" name="radios"value="false">
+      <input type="radio" ng-click="changeSubfactor('length')" id="radio2" value="false">
       <label for="radio2">Length</label>
 
-      <input type="radio" ng-click="changeSubfactor('release_date')" id="radio3" name="radios" value="true">
+      <input type="radio" ng-click="changeSubfactor('release_date')" id="radio3" value="true">
       <label for="radio3">Release year</label>
     </div>
   </div>

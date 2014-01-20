@@ -32,12 +32,15 @@ angular.module('film_factor.controllers').
 	        };
 
             $scope.loader = function(remove) {
+                var $overlay = $('.overlay'),
+                    $loader = $('#loader');
+
                 if(remove === true) {
-                    $('.overlay').hide();
-                    $('#loader').hide();
+                    $overlay.hide();
+                    $loader.hide();
                 } else {
-                    $('.overlay').show();
-                    $('#loader').show();
+                    $overlay.show();
+                    $loader.show();
                 }
             };
 
