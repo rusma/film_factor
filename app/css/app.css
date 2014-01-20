@@ -1,13 +1,14 @@
 /* app css stylesheet */
 body {
 	background-color: #2E373B;
+	font-family: "Helvetica Neue", Helvetica, arial, sans-serif!important;
 	margin: 0;
 }
 
 header {
 	width: 100%;
 	padding: 10px 0;
-	font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
+	
 	font-size: 29px;
 	color: white;
 	font-weight: bold;
@@ -46,11 +47,24 @@ header {
 
 }
 
+#background-legend{
+	z-index: -10;
+	background: #2b333a;
+	box-shadow: inset 0 0 1px #000;
+	width: 120px;
+	height: 350px;
+	margin-top: -550px;
+	margin-left:780px;
+	float:left;
+	color:#fff;
+	padding:15px;
+	font-size:14px;
+}
+
 #main-chart {
   /*width: 600px; */
   height: 600px;
   margin: 0 auto;
-  /*background-image: url("../img/stairs.jpg");*/
   margin-left: 140px;
   background-image: url(../img/circle_genre.png);
   background-repeat:no-repeat;
@@ -108,14 +122,7 @@ header {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a323a', endColorstr='#505f6c',GradientType=0 ); /* IE6-9 */
 }
 
-.rating-filters {
-	width: 100px;
-	color: white;
-	font-size: 12px;
-	float: right;
-	margin-top: -200px;
-	margin-right: 323px;
-}
+
 /* Tooltip */
 
 .tooltip {
@@ -170,6 +177,12 @@ header {
 	margin-top: -11px;
 }
 
+#legend-filters{
+	width:50px;
+	margin-left:90px;
+	font-size:12px;
+}
+
 .nvtooltip{
 	background: none!important;
 	border:none;
@@ -192,6 +205,73 @@ header {
 	padding:0;
 	margin:3px 0px;
 	text-align: left;
+}
+
+.nvd3.nv-legend{
+	background:#000;
+}
+
+
+/* RADIO BUTTONS AUDIENCE & CRITICS */
+.rating-filters {
+	width: 100px;
+	color: white;
+	font-size: 12px;
+	float: right;
+	margin-top: -280px;
+	margin-right: 305px;
+}
+
+.rating-filters p{
+	padding-bottom:2px;
+	border-bottom:3px solid #1d252c;
+}
+
+.rating-filters label {  
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 13px;  
+}  
+
+.rating-filters input[type=radio] {  
+    display: none;  
+}  
+
+.rating-filters label:before {  
+    content: "";  
+    display: inline-block;  
+    width: 16px;  
+    height: 16px;  
+	border-radius: 8px;
+    margin-right: 10px;  
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+    background-color: #2b333a;  
+    box-shadow: inset 0px 0px 3px 0px #111; 
+}  
+
+.rating-filters .radio label:before {  
+    border-radius: 8px;  
+}  
+
+.rating-filters input[type=radio]:checked + label:before {  
+    content: "\2022";  
+    color: #f3f3f3;  
+    font-size: 30px;  
+    text-align: center;  
+    line-height: 15px;  
+}  
+
+.clear{
+	display: block;
+	clear:both;
+	float:none;
+	height:10px;
+	width:10px;
 }
 
 /* AJAX-LOADER */

@@ -36,9 +36,9 @@ angular.module('film_factor.controllers', []).
                                 // "B2B2B2","FFFFFF"])
                                 .tooltipContent(function(key, y, e, graph){
                                     console.log(key, graph);
-                                    return "<div class='tooltip'><div class='title-tooltip'><div class='information-tooltip'>Selected Movies</div>" + graph.point.title +
+                                    return "<div class='tooltip'><div class='title-tooltip'><div class='information-tooltip'>Selected Movie</div>" + graph.point.title +
                                     "</div><p class='rating-tooltip'> Rating: " + graph.point.rating +
-                                    "</p><p class='genre-tooltip'>" + graph.point.genre +
+                                    " / 100 </p><p class='genre-tooltip'>" + graph.point.genre +
                                     "</p><p class='runtime'>" + graph.point.runtime + "</p><img src='" + graph.point.poster +"'></div>";
 
                                 });

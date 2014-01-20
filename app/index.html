@@ -55,7 +55,7 @@
     </div>
 
     <div class="rating-filters">
-    <p>Type of rating ICON</p>
+    <p>Rating</p>
       <input type="radio"  name="rating-radio"  checked ng-click="triggerRatingType('audience', true)"
         id="audience" >
       <label for="audience">audience</label><div class="clear"></div>
@@ -65,6 +65,12 @@
 
       <label for="critics">critics</label>
     </div>
+    
+    <div id="background-legend">
+    	<div class="information-tooltip" id="legend-filters">Filters</div>
+    	Genres
+    </div>
+    
 
     <div class="radio-toolbar">
       <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" value="all" checked>
