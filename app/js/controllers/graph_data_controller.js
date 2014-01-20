@@ -11,7 +11,7 @@ angular.module('film_factor.controllers').
             $scope.active_subfactor = 'genre';
             //event for click on a subfactor input
             $scope.$on('clickedRadioSubfactor', getNewSubfactorData);
-
+			
             //function to show loader and black overlay while loading data
             $scope.loader = function(remove) {
                 var $overlay = $('.overlay'),
@@ -58,11 +58,13 @@ angular.module('film_factor.controllers').
 
             //dont bind this one to the scope because its triggerable by broadcast event
             function getNewSubfactorData(name, type, callback) {
+            
+            	console.log(this);
+            	console.log(type);
+            	
                 var change_to_subfactor = type,
                     movie_data;
-
-                console.log('new subfator');
-
+					
                 //check what genre is active
                 if( $scope.active_subfactor === change_to_subfactor ) {
                     return;
