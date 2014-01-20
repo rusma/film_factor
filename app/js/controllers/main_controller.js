@@ -13,6 +13,11 @@ angular.module('film_factor.controllers', []).
             $scope.svg_elem = null;
 
             $scope.initChart = function() {
+                //set local storage to null to get new movies
+                localStorageService.set('genreMovies', null);
+                localStorageService.set('lengthMovies', null);
+                localStorageService.set('releaseDataMovies', null);
+
                 //use deffered to deal with async
                 var dfrd = $.Deferred();
 
@@ -51,23 +56,19 @@ angular.module('film_factor.controllers', []).
             $scope.renderChart = function(data, graph_elem) {
                 console.log('render chart', data);
                 //after the first time passing the graph_elem is not required anymore
-
+                var selected_svg_elem;
 
                 //CHECK WHETHER WHAT KIND OF RATING IS TURNED ON
                 if($scope.svg_elem === null) {
-                    d3.select(graph_elem)
-                    //contetenated for now
-                    .datum(data.audience.concat(data.critics))
-                          .transition().duration(800)
-                    .call($scope.chart);
-
+                    selected_svg_elem = d3.select(graph_elem)
                     $scope.svg_elem = graph_elem;
                 } else {
-                    d3.select($scope.svg_elem)
-                    .datum(data.audience.concat(data.critics))
-                          .transition().duration(800)
-                    .call($scope.chart);
+                   selected_svg_elem = d3.select($scope.svg_elem)
                 }
+
+                selected_svg_elem.datum(data.audience)
+                    .transition().duration(800)
+                    .call($scope.chart);
 
 
             };

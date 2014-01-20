@@ -8,6 +8,7 @@ angular.module('film_factor.controllers').
     controller('graph_data_controller', ['$scope', 'maiVCApiService', 'localStorageService',
 
         function($scope, maiVCApiService, localStorageService) {
+
             $scope.active_subfactor = 'genre';
             $scope.$on('clickedRadioSubfactor', getNewSubfactorData);
 
@@ -45,8 +46,6 @@ angular.module('film_factor.controllers').
             $scope.getGenreMovies = function() {
                 var dfrd = $.Deferred();
 
-                //http://docs.angularjs.org/api/ngCookies.$cookieStore
-                localStorageService.set('genreMovies', null);
                 if(localStorageService.get('genreMovies') === null) {
                     $scope.loader(false);
                     window.received_data = function(response) {
@@ -70,8 +69,6 @@ angular.module('film_factor.controllers').
                 var dfrd = $.Deferred();
                 console.log('get length movies');
 
-                //localStorageService.set('lengthMovies', null);
-                //http://docs.angularjs.org/api/ngCookies.$cookieStore
                 if(localStorageService.get('lengthMovies') === null) {
                     $scope.loader(false);
                     window.received_data = function(response) {
@@ -95,11 +92,12 @@ angular.module('film_factor.controllers').
                 var dfrd = $.Deferred();
                 console.log('get releasedate movies');
 
-                if(localStorageService.get('releaseDateMovies') === null) {
+                localStorageService.set('releaseDataMovies', null);
+                if(localStorageService.get('releaseDataMovies') === null) {
                     $scope.loader(false);
                      window.received_data = function(response) {
                         if(response.length != 0 || response.error != null) {
-                            localStorageService.add('genreMovies', response);
+                            localStorageService.add('releaseDataMovies', response);
                             $scope.loader(true);
                             dfrd.resolve(response);
                         }
@@ -259,16 +257,6 @@ angular.module('film_factor.controllers').
                         movie_data = null;
 
                 }
-
-
-                // if(movie_data !== null) {
-                //     console.log(movie_data);
-                //     callback(movie_data);
-
-                // } else {
-                //     return 'error no movie data';
-                // }
-
             };
 
    	    }]);
