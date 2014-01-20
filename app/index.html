@@ -66,25 +66,26 @@
     </div>
 
     <div id="background-legend">
-    	<div class="information-tooltip" id="legend-filters">Filgit mergeters</div>
+    	<div class="information-tooltip" id="legend-filters">Filters</div>
     	<p>Genres</p>
     	<span>Rating</span>
     </div>
-	
+
+
     <div class="radio-toolbar">
-      <input type="radio" ng-click="changeSubfactor('genre')" name="subfactor" checked>
+      <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" name="subfactor" checked>
       <label for="radio1">Genre</label>
 
-      <input type="radio" ng-click="changeSubfactor('runtime')" name="subfactor">
+      <input type="radio" ng-click="changeSubfactor('runtime')" id="radio2" name="subfactor">
       <label for="radio2">Length</label>
 
-      <input type="radio" ng-click="changeSubfactor('release_theater')" name="subfactor">
+      <input type="radio" ng-click="changeSubfactor('release_theater')" id="radio3" name="subfactor">
       <label for="radio3">Release month</label>
 
-      <input type="radio" ng-click="changeSubfactor('char')" name="subfactor">
+      <input type="radio" ng-click="changeSubfactor('char')" id="radio4" name="subfactor">
       <label for="radio4">First letter</label>
 
-      <input type="radio" ng-click="changeSubfactor('studio')" name="subfactor">
+      <input type="radio" ng-click="changeSubfactor('studio')" id="radio5" name="subfactor">
       <label for="radio5">Studio</label>
     </div>
   </div>

@@ -1,7 +1,7 @@
 /* app css stylesheet */
 body {
 	background-color: #2E373B;
-	font-family: "Helvetica Neue", Helvetica, arial, sans-serif!important;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 	margin: 0;
 }
 
@@ -13,7 +13,7 @@ header {
 	color: white;
 	font-weight: bold;
 	text-align: center;
-	background: rgb(54,64,70); /* Old browsers */
+	background: rgb(54,64,70); /* Old browsers which we don't fully support cause we hate them*/
 	background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(54,64,70,1)), to(rgba(51,60,66,1)));
 	background: -webkit-linear-gradient(rgba(54,64,70,1) 0%, rgba(51,60,66,1) 100%);
 	background: -moz-linear-gradient(rgba(54,64,70,1) 0%, rgba(51,60,66,1) 100%);
@@ -117,7 +117,6 @@ header {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#505f6c', endColorstr='#2a323a',GradientType=0 ); /* IE6-9 */
 	margin:0;
     padding:10px 12px;
-    font-family:Arial;
     font-size:16px;
     color:#fff;
     text-shadow: 1px 1px #333;
