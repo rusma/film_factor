@@ -2,7 +2,6 @@
 
 /* Directives */
 
-
 angular.module('film_factor.directives', []).
   directive('scatterPlot', function() {
     return {
@@ -13,7 +12,8 @@ angular.module('film_factor.directives', []).
 
                 scope.initChart().then(function(){
                     //start with the movies of genres
-                    scope.getGenreMovies().then(function(data){
+                    
+                    scope.showMovies('genre').then(function(data){
                         console.log(data);
                          // var data = _scope.generateRandomGenreMoviesData();
                         _scope.renderChart(data, _elem[0]);

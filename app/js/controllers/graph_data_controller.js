@@ -8,9 +8,13 @@ angular.module('film_factor.controllers').
     controller('graph_data_controller', ['$scope', 'maiVCApiService', 'localStorageService',
 
         function($scope, maiVCApiService, localStorageService) {
-            $scope.active_subfactor = 'genre';
+            $scope.active_subfactor = 'length';
             $scope.$on('clickedRadioSubfactor', getNewSubfactorData);
-
+			
+			
+			
+			
+			
             $scope.genres = {
 	            0: {"genre_id": 1, "genre": "action"},
 	            1: {"genre_id": 2, "genre": "adventure"},
@@ -39,77 +43,62 @@ angular.module('film_factor.controllers').
                     $('#loader').show();
                 }
             };
-
+			
             //PLAIN MOVIE-GENRE DATA
-
-            $scope.getGenreMovies = function() {
+			
+            $scope.showGenreMovies = function() {
                 var dfrd = $.Deferred();
 
                 //http://docs.angularjs.org/api/ngCookies.$cookieStore
-                localStorageService.set('genreMovies', null);
-                if(localStorageService.get('genreMovies') === null) {
+                localStorageService.set('genre', null);
+                
+                if(localStorageService.get('genre') === null) {
                     $scope.loader(false);
                     window.received_data = function(response) {
                         if(response.length != 0 || response.error != null) {
-                            localStorageService.add('genreMovies', response);
+                            localStorageService.add('genre', response);
                             $scope.loader(true);
                             dfrd.resolve(response);
                         }
                     };
 
-                    maiVCApiService.getGenreMovies();
+                    maiVCApiService.getMovies('genre');
                 } else {
-                    var response = localStorageService.get('genreMovies');
+                    var response = localStorageService.get('genre');
                     dfrd.resolve(response);
                 }
 
                 return dfrd.promise();
             };
 
-            $scope.getLengthMovies = function() {
+            $scope.showMovies = function(factor) {
+            	
+            	if(factor == 'genre')
+            	{
+	            	return $scope.showGenreMovies();
+            	}
+            	
                 var dfrd = $.Deferred();
-                console.log('get length movies');
 
                 //localStorageService.set('lengthMovies', null);
                 //http://docs.angularjs.org/api/ngCookies.$cookieStore
-                if(localStorageService.get('lengthMovies') === null) {
+                if(localStorageService.get(factor) === null) {
                     $scope.loader(false);
                     window.received_data = function(response) {
                         if(response.length != 0 || response.error != null) {
-                            localStorageService.add('lengthMovies', response);
+                            localStorageService.add(factor, response);
                             $scope.loader(true);
                             dfrd.resolve(response);
                         }
                     };
 
-                    maiVCApiService.getLengthMovies();
+                    maiVCApiService.getMovies(factor);
                 } else {
-                    var response = localStorageService.get('lengthMovies');
+                    var response = localStorageService.get(factor);
                     dfrd.resolve(response);
                 }
 
                 return dfrd.promise();
-            };
-
-            $scope.getReleaseDateMovies = function() {
-                var dfrd = $.Deferred();
-                console.log('get releasedate movies');
-
-                if(localStorageService.get('releaseDateMovies') === null) {
-                    $scope.loader(false);
-                     window.received_data = function(response) {
-                        if(response.length != 0 || response.error != null) {
-                            localStorageService.add('genreMovies', response);
-                            $scope.loader(true);
-                            dfrd.resolve(response);
-                        }
-                    };
-
-                    maiVCApiService.getReleaseDateMovies();
-                }
-
-                return 'datemovies';
-
             };
 
             $scope.processGenreMovies = function(unfiltered_movie_data) {
@@ -171,7 +160,8 @@ angular.module('film_factor.controllers').
 
             /*** MISC FUNCTIONS ****/
 
-            $scope.generateRandomGenreMoviesData = function() {
+			/*
+			$scope.generateRandomGenreMoviesData = function() {
                 var movies = [],
                     genres = $scope.genres,
                     //this only works in not IE
@@ -223,9 +213,11 @@ angular.module('film_factor.controllers').
                 return {x: x, y: y};
 
             };
+			*/
 
             //dont bind this one to the scope because its triggerable by broadcast event
             function getNewSubfactorData(name, type, callback) {
+               
                 var change_to_subfactor = type,
                     movie_data;
 
@@ -233,13 +225,20 @@ angular.module('film_factor.controllers').
                 if( $scope.active_subfactor === change_to_subfactor ) {
                     return;
                 }
-
-                switch(change_to_subfactor) {
+				
+				movie_data = null;
+				
+                $scope.active_subfactor = change_to_subfactor;
+                
+                movie_data = $scope.showMovies(change_to_subfactor).then(function(data){
+                    callback(data);
+                });
+                /*
+				
+				switch(change_to_subfactor) {
                     case 'genre':
                         $scope.active_subfactor = change_to_subfactor;
-                        movie_data = $scope.getGenreMovies().then(function(data){
-                            callback(data);
-                        });
+                        
                         break;
                     case 'length':
                         $scope.active_subfactor = change_to_subfactor;
@@ -248,9 +247,9 @@ angular.module('film_factor.controllers').
                         });
                         break;
 
-                    case 'release_date':
+                    case 'release':
                         $scope.active_subfactor = change_to_subfactor;
-                        $scope.getReleaseDateMovies().then(function(){
+                        $scope.getReleaseMovies().then(function(data){
                             callback(data);
                         });
                         break;
@@ -259,7 +258,8 @@ angular.module('film_factor.controllers').
                         movie_data = null;
 
                 }
-
+                
+                */
 
                 // if(movie_data !== null) {
                 //     console.log(movie_data);
