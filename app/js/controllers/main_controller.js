@@ -14,9 +14,9 @@ angular.module('film_factor.controllers', []).
             $scope.initChart = function() {
 
                 //set local storage to null to get new movies each refresh
-                localStorageService.set('genreMovies', null);
-                localStorageService.set('lengthMovies', null);
-                localStorageService.set('releaseDateMovies', null);
+                localStorageService.set('genre', null);
+                localStorageService.set('runtime', null);
+                localStorageService.set('release_date', null);
 
                 //use deffered to deal with async
                 var dfrd = $.Deferred();
