@@ -5,7 +5,7 @@
   <title>Film Factor</title>
   <!-- Angular stuff -->
   <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular/angular-route.js"></script>
+
   <!-- Third party angular module  -->
   <script src="lib/angular-local-storage.js"></script>
 
@@ -45,36 +45,48 @@
 
   <div class="overlay"></div>
 
-
-  <div class="container" ng-controller="main_controller">
-    <header>
-	    Compare movie subfactors with critics and audience ratings
-    </header>
+<header> Compare movie subfactors with critics and audience ratings </header>
     <div class="horizontal-line"></div>
+  <div class="container" ng-controller="main_controller">
+
+
     <div id="chart-contaner" ng-controller="graph_data_controller">
       <svg scatter-plot style="" id="main-chart"></svg>
     </div>
 
     <div class="rating-filters">
-    <p>Type of rating ICON</p>
-      <input type="checkbox" ng-click="triggerRatingType('audience', audience_status)"
-       ng-true-value="off" ng-false-value="on" ng-model="audience_status" id="audience" name="radios" >
+      <input type="radio"  name="rating-radio"  checked ng-click="triggerRatingType('audience', true)"
+        id="audience" >
       <label for="audience">audience</label><div class="clear"></div>
-      <input type="checkbox" ng-click="triggerRatingType('critics', critics_status)"
-       ng-true-value="off" ng-false-value="on" ng-model="critics_status" id="critics" name="radios">
+
+      <input type="radio" name="rating-radio" ng-click="triggerRatingType('critics', true)"
+       id="critics">
+
       <label for="critics">critics</label>
     </div>
 
-    <div class="radio-toolbar">
+    <div id="background-legend">
+    	<div class="information-tooltip" id="legend-filters">Filters</div>
+    	<p>Genres</p>
+    	<span>Rating</span>
+    </div>
 
-      <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" name="radios" value="all" checked>
+
+    <div class="radio-toolbar">
+      <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" value="all" name="subfactor" checked>
       <label for="radio1">Genre</label>
 
-      <input type="radio" ng-click="changeSubfactor('length')" id="radio2" name="radios"value="false">
+      <input type="radio" ng-click="changeSubfactor('runtime')" id="radio2" value="false" name="subfactor">
       <label for="radio2">Length</label>
 
-      <input type="radio" ng-click="changeSubfactor('release_date')" id="radio3" name="radios" value="true">
-      <label for="radio3">Release year</label>
+      <input type="radio" ng-click="changeSubfactor('release_theater')" id="radio3" value="true" name="subfactor">
+      <label for="radio3">Release month</label>
+
+      <input type="radio" ng-click="changeSubfactor('char')" id="radio4" value="true" name="subfactor">
+      <label for="radio4">First letter</label>
+
+      <input type="radio" ng-click="changeSubfactor('studio')" id="radio5" value="true" name="subfactor">
+      <label for="radio5">Studio</label>
     </div>
   </div>
 </body>

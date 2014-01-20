@@ -1,14 +1,15 @@
 /* app css stylesheet */
 body {
 	background-color: #2E373B;
+	font-family: "Helvetica Neue", Helvetica, arial, sans-serif!important;
 	margin: 0;
 }
 
 header {
 	width: 100%;
 	padding: 10px 0;
-	font-family: "Helvetica Neue", Helvetica, arial, sans-serif;
-	font-size: 29px;
+	
+	font-size: 22px;
 	color: white;
 	font-weight: bold;
 	text-align: center;
@@ -46,11 +47,36 @@ header {
 
 }
 
+#background-legend{
+	z-index: -10;
+	background: #2b333a;
+	box-shadow: inset 0 0 1px #000;
+	width: 120px;
+	height: 350px;
+	margin-top: -550px;
+	margin-left:780px;
+	float:left;
+	color:#fff;
+	padding:15px;
+	font-size:14px;
+}
+
+#background-legend p, #background-legend span{
+	padding-bottom:2px;
+	border-bottom:3px solid #1d252c;
+	display: block;
+	margin:0;
+	
+}
+
+#background-legend span{
+	margin-top:260px;
+}
+
 #main-chart {
   /*width: 600px; */
   height: 600px;
   margin: 0 auto;
-  /*background-image: url("../img/stairs.jpg");*/
   margin-left: 140px;
   background-image: url(../img/circle_genre.png);
   background-repeat:no-repeat;
@@ -60,7 +86,7 @@ header {
 
 /*RADIO BUTTONS*/
 .radio-toolbar {
-	margin: 0 auto;
+	margin: 0 340px;
 	text-align:center;
 }
 .radio-toolbar input[type="radio"] {
@@ -80,7 +106,7 @@ header {
 .radio-toolbar label {
     display:block;
     float:left;
-    box-shadow: 0px 1px 5px #333;
+    box-shadow: 0px 1px 2px #222;
    	background: #505f6c; /* Old browsers */
 	background: -moz-linear-gradient(top,  #505f6c 0%, #2a323a 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#505f6c), color-stop(100%,#2a323a)); /* Chrome,Safari4+ */
@@ -108,20 +134,156 @@ header {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2a323a', endColorstr='#505f6c',GradientType=0 ); /* IE6-9 */
 }
 
+
+/* Tooltip */
+
+.tooltip {
+	position: absolute;
+	padding: 10px;
+	display: inline-block;
+	height: 280px;
+	background: #2b333a;
+	color:#eee;
+	width:130px;
+	top: 100px;
+	left:20px;
+	box-shadow: inset 0px 0px 3px #222;
+	font-size:12px;
+}
+
+.information-tooltip {
+	position: absolute;
+	background: #252b31;
+	border: 1px solid #555;
+	box-shadow: 1px 0 3px #222;
+	margin-top:-24px;
+	margin-left:70px;
+	z-index:4;
+	width:100px;
+	padding:3px;
+	font-weight: normal;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.information-tooltip:after, .information-tooltip:before {
+	right: 100%;
+	top: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.information-tooltip:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-right-color: #252b31;
+	border-width: 10px;
+	margin-top: -10px;
+}
+.information-tooltip:before {
+	border-color: rgba(69, 80, 87, 0);
+	border-right-color: #555;
+	border-width: 11px;
+	margin-top: -11px;
+}
+
+#legend-filters{
+	width:50px;
+	margin-left:90px;
+	font-size:12px;
+}
+
+.nvtooltip{
+	background: none!important;
+	border:none;
+}
+
+.title-tooltip{
+	display: block;
+	font-weight: bold;
+	width:130px;
+	white-space: pre-wrap;
+	text-size:15px;
+	margin-bottom:10px;
+}
+.tooltip img{
+	width: 130px;
+	height: auto;
+}
+
+.tooltip p{
+	padding:0;
+	margin:3px 0px;
+	text-align: left;
+}
+
+.nvd3.nv-legend{
+	background:#000;
+}
+
+
+/* RADIO BUTTONS AUDIENCE & CRITICS */
 .rating-filters {
 	width: 100px;
 	color: white;
 	font-size: 12px;
 	float: right;
-	margin-top: -200px;
-	margin-right: 323px;
+	margin-top: -220px;
+	margin-right: 305px;
 }
-/* Tooltip */
 
-.tooltip {
-	padding: 10px 5px;
+.rating-filters p{
+	padding-bottom:2px;
+	border-bottom:3px solid #1d252c;
+}
+
+.rating-filters label {  
+    display: inline-block;  
+    cursor: pointer;  
+    position: relative;  
+    padding-left: 25px;  
+    margin-right: 15px;  
+    font-size: 13px;  
+}  
+
+.rating-filters input[type=radio] {  
+    display: none;  
+}  
+
+.rating-filters label:before {  
+    content: "";  
+    display: inline-block;  
+    width: 16px;  
+    height: 16px;  
+	border-radius: 8px;
+    margin-right: 10px;  
+    position: absolute;  
+    left: 0;  
+    bottom: 1px;  
+    background-color: #2b333a;  
+    box-shadow: inset 0px 0px 3px 0px #111; 
+}  
+
+.rating-filters .radio label:before {  
+    border-radius: 8px;  
+}  
+
+.rating-filters input[type=radio]:checked + label:before {  
+    content: "\2022";  
+    color: #f3f3f3;  
+    font-size: 30px;  
+    text-align: center;  
+    line-height: 15px;  
+}  
+
+.clear{
 	display: block;
-	width: 150px;
+	clear:both;
+	float:none;
+	height:10px;
+	width:10px;
 }
 
 /* AJAX-LOADER */
