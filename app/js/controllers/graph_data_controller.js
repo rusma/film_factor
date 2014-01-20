@@ -45,7 +45,7 @@ angular.module('film_factor.controllers').
             };
 
             //PLAIN MOVIE-GENRE DATA
-
+            // THE FOLLOWING THREE FUNCTIONS DO THE SAME~~!! MAKE ONE FUNCTION
             $scope.getGenreMovies = function() {
                 var dfrd = $.Deferred();
 
@@ -95,12 +95,12 @@ angular.module('film_factor.controllers').
                 var dfrd = $.Deferred();
                 console.log('get releasedate movies');
 
-                localStorageService.set('releaseDataMovies', null);
-                if(localStorageService.get('releaseDataMovies') === null) {
+                localStorageService.set('releaseDateMovies', null);
+                if(localStorageService.get('releaseDateMovies') === null) {
                     $scope.loader(false);
                      window.received_data = function(response) {
                         if(response.length != 0 || response.error != null) {
-                            localStorageService.add('releaseDataMovies', response);
+                            localStorageService.add('releaseDateMovies', response);
                             $scope.loader(true);
                             dfrd.resolve(response);
                         }

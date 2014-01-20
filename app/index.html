@@ -48,8 +48,8 @@
 <header> Compare movie subfactors with critics and audience ratings </header>
     <div class="horizontal-line"></div>
   <div class="container" ng-controller="main_controller">
-    
-    
+
+
     <div id="chart-contaner" ng-controller="graph_data_controller">
       <svg scatter-plot style="" id="main-chart"></svg>
     </div>
@@ -65,21 +65,21 @@
 
       <label for="critics">critics</label>
     </div>
-    
+
     <div id="background-legend">
     	<div class="information-tooltip" id="legend-filters">Filters</div>
     	Genres
     </div>
-    
+
 
     <div class="radio-toolbar">
-      <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" value="all" checked>
+      <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" value="all" name="subfactor" checked>
       <label for="radio1">Genre</label>
 
-      <input type="radio" ng-click="changeSubfactor('length')" id="radio2" value="false">
+      <input type="radio" ng-click="changeSubfactor('length')" id="radio2" value="false" name="subfactor">
       <label for="radio2">Length</label>
 
-      <input type="radio" ng-click="changeSubfactor('release_date')" id="radio3" value="true">
+      <input type="radio" ng-click="changeSubfactor('release_date')" id="radio3" value="true" name="subfactor">
       <label for="radio3">Release year</label>
     </div>
   </div>

@@ -11621,7 +11621,7 @@ nv.models.scatterChart = function() {
     ;
 
     //changed 30 to 0
-  var margin       = {top: -10, right: 20, bottom: 50, left: 75}
+  var margin       = {top: 20, right: 20, bottom: 50, left: 75}
     , width        = null
     , height       = null
     , color        = nv.utils.defaultColor()
