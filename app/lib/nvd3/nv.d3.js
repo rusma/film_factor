@@ -12018,6 +12018,8 @@ nv.models.scatterChart = function() {
       });
 
       scatter.dispatch.on('elementMouseover.tooltip', function(e) {
+        //MADE SOME EDITS HERE, OLD TOOLTIP ONLY GETS REMOVED WHEN NEW POINT IS HOVERED
+        nv.tooltip.cleanup();
         d3.select('.nv-chart-' + scatter.id() + ' .nv-series-' + e.seriesIndex + ' .nv-distx-' + e.pointIndex)
             .attr('y1', function(d,i) { return e.pos[1] - availableHeight;});
         d3.select('.nv-chart-' + scatter.id() + ' .nv-series-' + e.seriesIndex + ' .nv-disty-' + e.pointIndex)
@@ -12064,7 +12066,8 @@ nv.models.scatterChart = function() {
   //------------------------------------------------------------
 
   scatter.dispatch.on('elementMouseout.tooltip', function(e) {
-    dispatch.tooltipHide(e);
+     //MADE SOME EDITS HERE, OLD TOOLTIP ONLY GETS REMOVED WHEN NEW POINT IS HOVERED
+    // dispatch.tooltipHide(e);
 
     d3.select('.nv-chart-' + scatter.id() + ' .nv-series-' + e.seriesIndex + ' .nv-distx-' + e.pointIndex)
         .attr('y1', 0);

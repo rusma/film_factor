@@ -47,50 +47,48 @@
 
 <header> Compare movie subfactors with critics and audience ratings </header>
     <div class="horizontal-line"></div>
-  <div class="container" ng-controller="main_controller">
+    <div class="container" ng-controller="main_controller">
+      <div id="chart-contaner" ng-controller="graph_data_controller">
+        <svg scatter-plot start-subfactor="genre" style="" id="main-chart"></svg>
+      </div>
+
+      <div class="rating-filters">
+        <input type="radio"  name="rating-radio"  checked ng-click="triggerRatingType('audience')"
+          id="audience" >
+        <label for="audience">audience</label><div class="clear"></div>
+
+        <input type="radio" name="rating-radio" ng-click="triggerRatingType('critics')"
+         id="critics">
+
+        <label for="critics">critics</label>
+      </div>
+
+      <div id="background-legend">
+      	<div class="information-tooltip" id="legend-filters">Filters</div>
+      	<p>Genres</p>
+      	<span>Rating</span>
+      </div>
 
 
-    <div id="chart-contaner" ng-controller="graph_data_controller">
-      <svg scatter-plot style="" id="main-chart"></svg>
+    	<div class="radio-toolbar">
+        <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" name="subfactor" checked>
+        <label for="radio1">Genre</label>
+
+        <input type="radio" ng-click="changeSubfactor('runtime')" id="radio2" name="subfactor">
+        <label for="radio2">Runtime</label>
+
+        <input type="radio" ng-click="changeSubfactor('release_theater')" id="radio3" name="subfactor">
+        <label for="radio3">Release month</label>
+
+        <input type="radio" ng-click="changeSubfactor('char')" id="radio4" name="subfactor">
+        <label for="radio4">First letter title</label>
+
+        <input type="radio" ng-click="changeSubfactor('studio')" id="radio5" name="subfactor">
+        <label for="radio5">Studio</label>
+      </div>
     </div>
 
-    <div class="rating-filters">
-      <input type="radio"  name="rating-radio"  checked ng-click="triggerRatingType('audience', true)"
-        id="audience" >
-      <label for="audience">audience</label><div class="clear"></div>
-
-      <input type="radio" name="rating-radio" ng-click="triggerRatingType('critics', true)"
-       id="critics">
-
-      <label for="critics">critics</label>
-    </div>
-
-    <div id="background-legend">
-    	<div class="information-tooltip" id="legend-filters">Filters</div>
-    	<p>Genres</p>
-    	<span>Rating</span>
-    </div>
-
-
-	<div class="radio-toolbar">
-      <input type="radio" ng-click="changeSubfactor('genre')" id="radio1" name="subfactor" checked>
-      <label for="radio1">Genre</label>
-
-      <input type="radio" ng-click="changeSubfactor('runtime')" id="radio2" name="subfactor">
-      <label for="radio2">Runtime</label>
-
-      <input type="radio" ng-click="changeSubfactor('release_theater')" id="radio3" name="subfactor">
-      <label for="radio3">Release month</label>
-
-      <input type="radio" ng-click="changeSubfactor('char')" id="radio4" name="subfactor">
-      <label for="radio4">First letter title</label>
-
-      <input type="radio" ng-click="changeSubfactor('studio')" id="radio5" name="subfactor">
-      <label for="radio5">Studio</label>
-    </div>
-</div>
-     
-     <div id="informationText">
+    <div id="informationText">
   	On this visualization you can see how movies score compared with sub factors. <br> The more a movie is in the middle the better the movie scores according to critics or audience. <br> You can select different sub factors and you can change the filters. Try it out!
   </div>
 </body>

@@ -14,7 +14,7 @@ angular.module('film_factor.directives', []).
 
                 scope.initChart().then(function(){
                     //start with the genremovies
-                    scope.getMovies('genre').then(function(data){
+                    scope.getMovies(attrs.startSubfactor).then(function(data){
                         console.log(data);
                         _scope.renderChart(data, _elem[0]);
                     });
