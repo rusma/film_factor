@@ -63,7 +63,8 @@ angular.module('film_factor.controllers').
                     movie_data;
 
                 console.log('new subfator');
-
+				                    //change background image
+                    $scope.backgroundImageForSubfactor(change_to_subfactor);
 
 
                 //check what genre is active
@@ -81,8 +82,7 @@ angular.module('film_factor.controllers').
                     }
                     //trigger callback with the data
                     callback(data);
-                    //change background image
-                    $scope.backgroundImageForSubfactor(change_to_subfactor);
+
                 });
             };
 
