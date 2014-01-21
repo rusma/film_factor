@@ -127,7 +127,7 @@ header {
 	position: absolute;
 	padding: 10px;
 	display: inline-block;
-	height: 280px;
+	min-height: 300px;
 	background: #2b333a;
 	color:#eee;
 	width:130px;
@@ -193,6 +193,9 @@ header {
 	white-space: pre-wrap;
 	text-size:15px;
 	margin-bottom:10px;
+}
+.tooltip .studio{
+	white-space: pre-wrap;
 }
 .tooltip img{
 	width: 130px;
@@ -272,6 +275,17 @@ header {
 	width:10px;
 }
 
+#informationText{
+	font-size: 14px;
+	float:left;
+	width:700px;
+	text-align:center;
+	color:#fff;
+	padding:10px;
+	background: #2b333a;
+	box-shadow: inset 0 0 1px #000;
+	margin: 10px 150px;
+}
 /* AJAX-LOADER */
 
 #loader {
