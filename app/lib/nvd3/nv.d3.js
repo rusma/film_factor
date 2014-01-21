@@ -11810,7 +11810,7 @@ nv.models.scatterChart = function() {
 
         wrap.select('.nv-legendWrap')
             //.attr('transform', 'translate(' + (availableWidth - legendWidth) + ',' + (-margin.top) +')');
-            .attr('transform', 'translate(590, 70)');
+            .attr('transform', 'translate(603, 70)');
       }
 
       //------------------------------------------------------------

@@ -39,8 +39,8 @@
 </head>
 <body ng-app="film_factor">
  <div id="loader">
-    <h2>Loading ..</h2>
-    <img class="loader" src="img/ajax-loader.gif">
+    <h3>Loading ..</h3>
+    <img class="loader" src="img/movieLoader.gif">
   </div>
 
   <div class="overlay"></div>
@@ -77,13 +77,13 @@
       <label for="radio1">Genre</label>
 
       <input type="radio" ng-click="changeSubfactor('runtime')" id="radio2" name="subfactor">
-      <label for="radio2">Length</label>
+      <label for="radio2">Runtime</label>
 
       <input type="radio" ng-click="changeSubfactor('release_theater')" id="radio3" name="subfactor">
       <label for="radio3">Release month</label>
 
       <input type="radio" ng-click="changeSubfactor('char')" id="radio4" name="subfactor">
-      <label for="radio4">First letter</label>
+      <label for="radio4">First letter title</label>
 
       <input type="radio" ng-click="changeSubfactor('studio')" id="radio5" name="subfactor">
       <label for="radio5">Studio</label>
