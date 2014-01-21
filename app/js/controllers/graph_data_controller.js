@@ -64,6 +64,8 @@ angular.module('film_factor.controllers').
 
                 console.log('new subfator');
 
+
+
                 //check what genre is active
                 if( $scope.active_subfactor === change_to_subfactor ) {
                     return;
@@ -79,7 +81,14 @@ angular.module('film_factor.controllers').
                     }
                     //trigger callback with the data
                     callback(data);
+                    //change background image
+                    $scope.backgroundImageForSubfactor(change_to_subfactor);
                 });
+            };
+
+            $scope.backgroundImageForSubfactor = function(subfactor) {
+                console.log('url("../img/' + subfactor + '.png")');
+                $("#main-chart").css('backgroundImage', 'url("img/' + subfactor + '.png")');
             };
 
    	    }]);
