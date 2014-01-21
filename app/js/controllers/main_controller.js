@@ -10,6 +10,7 @@ angular.module('film_factor.controllers', []).
             $scope.chart = null;
             $scope.svg_elem = null;
             $scope.active_data = null;
+            $scope.active_rating_type = 'audience';
 
             $scope.initChart = function() {
 
@@ -70,9 +71,14 @@ angular.module('film_factor.controllers', []).
                    selected_svg_elem = d3.select($scope.svg_elem)
                 }
 
-                //start with audience
-                selected_svg_elem.datum(data.audience)
-                    .transition().duration(800)
+                var selected_svg_elem_with_data;
+                if($scope.active_rating_type === 'audience') {
+                    selected_svg_elem_with_data = selected_svg_elem.datum(data.audience)
+                } else {
+                    selected_svg_elem_with_data = selected_svg_elem.datum(data.critics)
+                }
+
+                selected_svg_elem_with_data.transition().duration(800)
                     .call($scope.chart);
             };
 
@@ -101,7 +107,8 @@ angular.module('film_factor.controllers', []).
             //trigger audience or critics on or off
             //@type = audience/critics
             //@status = on or off
-            $scope.triggerRatingType = function(type, status) {
+            $scope.triggerRatingType = function(type) {
+                $scope.active_rating_type = type;
                 $scope.renderRatingType(type);
             };
         }]);
