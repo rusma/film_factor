@@ -37,16 +37,16 @@ angular.module('film_factor.controllers', []).
                                 // "7BD5E6","7077B7","FF3ACA","7A3DAC","DF6F8F","EB4847","98000B",
                                 // "B2B2B2","FFFFFF"])
                                 .tooltipContent(function(key, y, e, graph){
-                                    console.log(key, graph);
                                     return "<div class='tooltip'><div class='title-tooltip'><div class='information-tooltip'>Selected Movie</div>" + graph.point.title +
                                     "</div><p class='rating-tooltip'> Rating: " + graph.point.rating +
                                     " / 100 </p><p class='genre-tooltip'>" + graph.point.genre +
                                     "</p><p class='runtime'>" + graph.point.runtime + " min</p><img src='" + graph.point.poster +"'></div>";
                                 });
-								
-                     nv.utils.windowResize($scope.chart.update);
-					 
-                     dfrd.resolve();
+
+                    nv.utils.windowResize($scope.chart.update);
+
+                    dfrd.resolve();
+
 
                 });
 
@@ -93,6 +93,7 @@ angular.module('film_factor.controllers', []).
             $scope.changeSubfactor = function(type) {
                 //pass the renderchart function along so the graph_data_controller can call
                 //it with new data
+                console.log(type);
                 $scope.$broadcast('clickedRadioSubfactor', type, $scope.renderChart);
             };
 

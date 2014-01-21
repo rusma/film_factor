@@ -11680,6 +11680,7 @@ nv.models.scatterChart = function() {
   var x0, y0;
 
   var showTooltip = function(e, offsetElement) {
+    console.log('hover');
     //TODO: make tooltip style an option between single or dual on axes (maybe on all charts with axes?)
 
     //I CHANGED SOMETHING HERE *** SOURCE EDIT
