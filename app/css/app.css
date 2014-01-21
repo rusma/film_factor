@@ -120,6 +120,7 @@ header {
     font-size:16px;
     color:#fff;
     text-shadow: 1px 1px #333;
+    cursor: pointer;
 }
 
 .radio-toolbar input[type="radio"]:checked + label {
