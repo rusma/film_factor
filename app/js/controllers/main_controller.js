@@ -38,6 +38,7 @@ angular.module('film_factor.controllers', []).
                                 // "7BD5E6","7077B7","FF3ACA","7A3DAC","DF6F8F","EB4847","98000B",
                                 // "B2B2B2","FFFFFF"])
                                 .tooltipContent(function(key, y, e, graph){
+                                    console.log(graph);
                                     return "<div class='tooltip'><div class='title-tooltip'><div class='information-tooltip'>Selected Movie</div>" + graph.point.title +
                                     "</div><p class='rating-tooltip'>Rating: " + graph.point.rating +
                                     " / 100 </p><p class='genre-tooltip'>Genre: " + graph.point.genre +
@@ -75,10 +76,11 @@ angular.module('film_factor.controllers', []).
                 if($scope.active_rating_type === 'audience') {
                     selected_svg_elem_with_data = selected_svg_elem.datum(data.audience)
                 } else {
+                    console.log(data.critics);
                     selected_svg_elem_with_data = selected_svg_elem.datum(data.critics)
                 }
 
-                selected_svg_elem_with_data.transition().duration(800)
+                selected_svg_elem_with_data.transition().duration(1500)
                     .call($scope.chart);
             };
 
@@ -92,8 +94,9 @@ angular.module('film_factor.controllers', []).
                     selected_svg_elem_with_data = selected_svg_elem.datum($scope.active_data.critics);
                 }
 
-                selected_svg_elem_with_data.transition().duration(1500)
-                    .call($scope.chart);
+               selected_svg_elem_with_data.transition().duration(1500)
+                .call($scope.chart);
+
             };
 
             $scope.changeSubfactor = function(type) {

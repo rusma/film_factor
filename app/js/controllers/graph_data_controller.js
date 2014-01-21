@@ -16,7 +16,7 @@ angular.module('film_factor.controllers').
             $scope.loader = function(remove) {
                 var $overlay = $('.overlay'),
                     $loader = $('#loader');
-				
+
                 if(remove === true) {
                     $overlay.hide();
                     $loader.hide();
@@ -24,7 +24,6 @@ angular.module('film_factor.controllers').
                     $overlay.show();
                     $loader.show();
                 }
-                
             };
 
             $scope.getMovies = function(subfactor) {
